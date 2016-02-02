@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_icon">
+        <item>ic_drive_eta_white_24dp</item>
+        <item>ic_work_white_24dp</item>
+        <item>ic_drive_eta_white_24dp</item>
+        <item>ic_work_white_24dp</item>
+    </string-array>
+</resources>
