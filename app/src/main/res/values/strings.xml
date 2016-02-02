@@ -22,4 +22,5 @@
         <item>메뉴3</item>
         <item>메뉴4</item>
     </string-array>
+    <string name="title_activity_membership">membershipActivity</string>
 </resources>

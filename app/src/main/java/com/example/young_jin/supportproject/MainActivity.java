@@ -8,15 +8,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+    private View zoomDialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +32,10 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+
     }
 
     @Override
@@ -45,11 +53,16 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
-        if (id == R.id.home) {
+        if (id == R.id.membership) {
+            Intent intent = new Intent(this, MembershipActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+
+            overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
             return true;
         }
 
