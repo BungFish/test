@@ -21,7 +21,7 @@ import java.util.Date;
  */
 public class MyFragment extends Fragment{
 
-    private CustomPagerAdapter mCustomPagerAdapter;
+    private CustomPagerAdapter2 mCustomPagerAdapter;
     private ViewPager mViewPager;
     private TextView textView2;
     private int state = 1;
@@ -47,30 +47,10 @@ public class MyFragment extends Fragment{
 
         View layout = inflater.inflate(R.layout.my_fragment, container, false);
 
-        mCustomPagerAdapter = new CustomPagerAdapter(getActivity());
+        mCustomPagerAdapter = new CustomPagerAdapter2(getActivity());
 
         mViewPager = (ViewPager) layout.findViewById(R.id.pager);
         mViewPager.setAdapter(mCustomPagerAdapter);
-
-        DisplayMetrics dm = getActivity().getApplicationContext().getResources().getDisplayMetrics();
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        mViewPager.setPageMargin((int) (-width/2.2));
-        mViewPager.setOffscreenPageLimit(5);
-        mViewPager.setClipChildren(false);
-        mViewPager.setCurrentItem(1);
-
-        mViewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(View page, float position) {
-                final float normalizedposition = Math.abs(Math.abs(position) - 1);
-                page.setScaleX(normalizedposition / 2 + 0.3f);
-                page.setScaleY(normalizedposition / 2 + 0.3f);
-
-                page.setRotationY(position * -30);
-            }
-        });
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
