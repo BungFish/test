@@ -4,12 +4,20 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Young-Jin on 2016-02-02.
@@ -17,17 +25,27 @@ import android.widget.LinearLayout;
 class CustomPagerAdapter extends PagerAdapter {
 
     int[] mResources = {
-            R.drawable.android_wallpaper,
-            R.drawable.android_wallpaper2,
-            R.drawable.android_wallpaper,
-            R.drawable.android_wallpaper2,
+            R.drawable.card1,
+            R.drawable.card2,
+            R.drawable.card3
     };
+
+    int[] mColors = {
+            R.array.sm,
+            R.array.basic,
+            R.array.drive
+    };
+
+    String[] card_names;
     Context mContext;
     LayoutInflater mLayoutInflater;
 
     public CustomPagerAdapter(Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        card_names = mContext.getResources().getStringArray(R.array.card_names);
+
     }
 
     @Override
@@ -41,12 +59,45 @@ class CustomPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         imageView.setImageBitmap(
                 decodeSampledBitmapFromResource(itemView.getResources(), mResources[position], 100, 100));
+
+//        TextView textView = (TextView) itemView.findViewById(R.id.textView);
+//        textView.setText(1 + position + " of the " + getCount());
+
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext, position+1+"", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        TextView card_name = (TextView) itemView.findViewById(R.id.card_name);
+        card_name.setText(card_names[position]);
+
+        int[] colors = mContext.getResources().getIntArray(mColors[position]);
+
+        LinearLayout firstLayout = (LinearLayout) itemView.findViewById(R.id.first_layout);
+        firstLayout.setBackgroundColor(colors[0]);
+
+        LinearLayout secondLayout = (LinearLayout) itemView.findViewById(R.id.second_layout);
+        secondLayout.setBackgroundColor(colors[1]);
+
+        LinearLayout thirdLayout = (LinearLayout) itemView.findViewById(R.id.third_layout);
+        thirdLayout.setBackgroundColor(colors[2]);
+
+        thirdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "기능 미완성", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         container.addView(itemView);
 

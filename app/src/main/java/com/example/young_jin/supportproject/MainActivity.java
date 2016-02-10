@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +18,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private static final String TAG = "MainActiviy";
 
     private Toolbar toolbar;
     private View zoomDialogView;
@@ -29,12 +33,20 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(TAG, "onCreate(Bundel) called");
+
         toolbar = (Toolbar) findViewById(R.id.app_bar);
+        TextView toolbar_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar_title.setText(getSupportActionBar().getTitle());
+        getSupportActionBar().setTitle("");
+
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+
+
 
     }
 
@@ -57,15 +69,45 @@ public class MainActivity extends ActionBarActivity {
 //            return true;
 //        }
 
-        if (id == R.id.membership) {
-            Intent intent = new Intent(this, MembershipActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-
-            overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
-            return true;
-        }
+//        if (id == R.id.membership) {
+//            Intent intent = new Intent(this, MembershipActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//            startActivity(intent);
+//
+//            overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart(Bundel) called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause(Bundel) called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume(Bundel) called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop(Bundel) called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy(Bundel) called");
     }
 }

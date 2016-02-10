@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.fragmnets.CrimeFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
     private View containerView;
     private TextView username;
     public static final String DRAWABLES_PATH = ":values/";
+    private String[] titles;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -59,19 +62,20 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         // Inflate the layout for this fragment
 
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        saveToPreferences(getActivity(), "username", "홍길동");
         username = (TextView) layout.findViewById(R.id.username);
         username.setText(readFromPreferences(getActivity(), "username", ""));
 
-        ((LinearLayout)layout.findViewById(R.id.containerDrawerImage)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-
-                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
-            }
-        });
+//        ((LinearLayout)layout.findViewById(R.id.containerDrawerImage)).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), MainActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                startActivity(intent);
+//
+//                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+//            }
+//        });
 
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new RecyclerAdapter(getActivity(), getData());
@@ -83,9 +87,9 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 
     public List<DefaultModel> getData() {
         List<DefaultModel> list = new ArrayList<>();
-        int[] icons = {R.drawable.ic_drive_eta_white_24dp, R.drawable.ic_work_white_24dp, R.drawable.ic_drive_eta_white_24dp, R.drawable.ic_work_white_24dp};
+        int[] icons = {R.drawable.ic_home_white_24dp, R.drawable.ic_credit_card_white_24dp, R.drawable.ic_place_white_24dp, R.drawable.ic_more_vert_white_24dp};
 
-        String[] titles = getResources().getStringArray(R.array.category);
+        titles = getResources().getStringArray(R.array.category);
         for (int i = 0; i < titles.length; i++) {
             DefaultModel current = new DefaultModel();
 
@@ -161,24 +165,22 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 
         switch (position){
             case 0:
-                if(getActivity().getTitle().equals("메뉴1")){
-                    Toast.makeText(getActivity(), "현재 페이지 입니다.", Toast.LENGTH_SHORT).show();
-                } else {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.main_context, MyFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
-                }
                 break;
             case 1:
-                if(getActivity().getTitle().equals("메뉴2")){
-                    Toast.makeText(getActivity(), "현재 페이지 입니다.", Toast.LENGTH_SHORT).show();
-                } else {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.main_context, MyFragment2.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
-                }
+                break;
+            case 2:
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
+                    mDrawerLayout.closeDrawer(containerView);
                 break;
             default:
                 Toast.makeText(getActivity(), "개발중인 메뉴입니다 조금만 기다려주세요!", Toast.LENGTH_SHORT).show();
