@@ -42,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
         toolbar_title.setText(getSupportActionBar().getTitle());
         getSupportActionBar().setTitle("");
 
+        toolbar.setCollapsible(true);
+
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);

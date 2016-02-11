@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.young_jin.supportproject.fragmnets.CrimeFragment;
+import com.example.young_jin.supportproject.fragmnets.MyHamFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -181,6 +182,12 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
                             .beginTransaction()
                             .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
+                break;
+            case 3:
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_context, MyHamFragment.newInstance()).commit();
+                mDrawerLayout.closeDrawer(containerView);
                 break;
             default:
                 Toast.makeText(getActivity(), "개발중인 메뉴입니다 조금만 기다려주세요!", Toast.LENGTH_SHORT).show();

@@ -19,7 +19,7 @@ public class CrimeLab {
     public CrimeLab(Context mAppContext) {
         this.mAppContext = mAppContext;
         mCrimes = new ArrayList<Crime>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             Crime c = new Crime();
             c.setmTItle("범죄 #" + i);
             c.setmSolved(i%2==0);

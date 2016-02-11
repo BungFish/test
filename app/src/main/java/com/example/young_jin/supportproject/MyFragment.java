@@ -1,18 +1,29 @@
 package com.example.young_jin.supportproject;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.young_jin.supportproject.Adapter.CrimeAdapter;
+import com.example.young_jin.supportproject.Adapter.HamRecyclerAdapter;
 
 import java.util.Date;
 
@@ -21,10 +32,21 @@ import java.util.Date;
  */
 public class MyFragment extends Fragment{
 
+    private int widthOfScreen;
     private CustomPagerAdapter2 mCustomPagerAdapter;
     private ViewPager mViewPager;
-    private TextView textView2;
-    private int state = 1;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+
+    int[] mColors = {
+            R.array.sm,
+            R.array.basic,
+            R.array.drive
+    };
+    private HamRecyclerAdapter adapter;
+    private int dotsCount;
+    private ImageView[] dots;
+    private LinearLayout pager_indicator;
 
     public static MyFragment newInstance() {
         MyFragment fragment = new MyFragment();
@@ -32,7 +54,6 @@ public class MyFragment extends Fragment{
     }
 
     public MyFragment() {
-
 // Required empty public constructor
     }
 
@@ -47,6 +68,9 @@ public class MyFragment extends Fragment{
 
         View layout = inflater.inflate(R.layout.my_fragment, container, false);
 
+        DisplayMetrics dM = getResources().getDisplayMetrics();
+        widthOfScreen = dM.widthPixels;
+
         mCustomPagerAdapter = new CustomPagerAdapter2(getActivity());
 
         mViewPager = (ViewPager) layout.findViewById(R.id.pager);
@@ -60,8 +84,6 @@ public class MyFragment extends Fragment{
 
             @Override
             public void onPageSelected(int position) {
-                getActivity().setTitle(position+"번째 이미지");
-                textView2.setText((state++)+"");
 
             }
 
@@ -71,37 +93,108 @@ public class MyFragment extends Fragment{
             }
         });
 
-        textView2 = (TextView) layout.findViewById(R.id.textView2);
-//        textView2.setText(state+"");
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-//                DatePickerFragment dialog = new DatePickerFragment();
-                DatePickerFragment dialog = DatePickerFragment.newInstance(new Date());
-                dialog.show(fm,"date");
-            }
-        });
+        recyclerView = (RecyclerView) layout.findViewById(R.id.my_list);
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        adapter = new HamRecyclerAdapter(getActivity());
+        recyclerView.setAdapter(adapter);
+
+        int[] colors = getResources().getIntArray(mColors[1]);
+
+        LinearLayout firstLayout = (LinearLayout) layout.findViewById(R.id.first_layout);
+        firstLayout.setBackgroundColor(colors[0]);
+
+        LinearLayout secondLayout = (LinearLayout) layout.findViewById(R.id.second_layout);
+        secondLayout.setBackgroundColor(colors[1]);
+
+//        LinearLayout thirdLayout = (LinearLayout) layout.findViewById(R.id.third_layout);
+//        thirdLayout.setBackgroundColor(getResources().getColor(R.color.hint));
+//
+//        thirdLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "기능 미완성", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+//        textView2 = (TextView) layout.findViewById(R.id.textView2);
+////        textView2.setText(state+"");
+//        textView2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FragmentManager fm = getActivity().getSupportFragmentManager();
+////                DatePickerFragment dialog = new DatePickerFragment();
+//                DatePickerFragment dialog = DatePickerFragment.newInstance(new Date());
+//                dialog.show(fm,"date");
+//            }
+//        });
 
         ImageView show_card = (ImageView) layout.findViewById(R.id.show_card);
+
         show_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.show_card);
 
+                Dialog dialog = new Dialog(getActivity());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.setContentView(R.layout.show_card);
+                dialog.setCanceledOnTouchOutside(true);
                 dialog.show();
+
             }
         });
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < dotsCount; i++) {
+                    dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
+                }
+
+                dots[position].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        pager_indicator = (LinearLayout) layout.findViewById(R.id.viewPagerCountDots);
+        setUiPageViewController();
 
 // Inflate the layout for this fragment
         return layout;
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
+    private void setUiPageViewController() {
+
+        dotsCount = mCustomPagerAdapter.getCount();
+        dots = new ImageView[dotsCount];
+
+        for (int i = 0; i < dotsCount; i++) {
+            dots[i] = new ImageView(getActivity());
+            dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            //점 간격
+            params.setMargins(8* widthOfScreen /1440, 0, 8* widthOfScreen /1440, 0);
+
+            pager_indicator.addView(dots[i], params);
+        }
+
+        dots[0].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
     }
 }

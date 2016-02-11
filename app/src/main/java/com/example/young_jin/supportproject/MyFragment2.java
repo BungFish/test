@@ -58,12 +58,7 @@ public class MyFragment2 extends Fragment{
         mViewPager = (ViewPager) layout.findViewById(R.id.pager2);
         mViewPager.setAdapter(mCustomPagerAdapter);
 
-
-//        metrics = this.getResources().getDisplayMetrics();
-//        width = metrics.widthPixels;
-//        height = metrics.heightPixels;
-//        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100 * 2, getResources().getDisplayMetrics());
-
+        //모든 스크린에 최적화
         DisplayMetrics dM = getResources().getDisplayMetrics();
         widthOfScreen = dM.widthPixels;
         int widthOfView = 300; //in DP
@@ -71,7 +66,7 @@ public class MyFragment2 extends Fragment{
         float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
         mViewPager.setPageMargin((int) (-widthOfScreen +offset));
 
-//        mViewPager.setPageMargin((int) (-width / 5));
+//        mViewPager.setPageMargin((int) (-widthOfScreen / 5));
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setClipChildren(false);
 
