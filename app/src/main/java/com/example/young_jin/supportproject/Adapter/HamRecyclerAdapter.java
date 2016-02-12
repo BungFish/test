@@ -1,4 +1,4 @@
-package com.example.young_jin.supportproject.Adapter;
+package com.example.young_jin.supportproject.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -40,8 +40,8 @@ public class HamRecyclerAdapter extends RecyclerView.Adapter<HamRecyclerAdapter.
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.progressBar.setProgress(getItemCount());
-        holder.progressBar.setProgress(position);
+        holder.progressBar.setMax(getItemCount());
+        holder.progressBar.setProgress(position+1);
 
 //        holder.title.setOnClickListener(new View.OnClickListener() {
 //            @Override

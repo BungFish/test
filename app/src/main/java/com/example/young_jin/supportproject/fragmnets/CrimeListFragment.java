@@ -1,21 +1,17 @@
 package com.example.young_jin.supportproject.fragmnets;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.example.young_jin.supportproject.Adapter.CrimeAdapter;
+import com.example.young_jin.supportproject.adapter.CrimeAdapter;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.models.Crime;
 import com.example.young_jin.supportproject.singleton.CrimeLab;

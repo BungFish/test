@@ -12,4 +12,13 @@
         <item name="color">@color/icons</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextAppearance.Design.Snackbar.Message" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/snackbar_text_size</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
 </resources>

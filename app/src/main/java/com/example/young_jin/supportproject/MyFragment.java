@@ -1,31 +1,22 @@
 package com.example.young_jin.supportproject;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.young_jin.supportproject.Adapter.CrimeAdapter;
-import com.example.young_jin.supportproject.Adapter.HamRecyclerAdapter;
-
-import java.util.Date;
+import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
 
 /**
  * Created by Young-Jin on 2016-02-02.

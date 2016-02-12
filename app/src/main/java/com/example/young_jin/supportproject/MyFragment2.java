@@ -58,15 +58,19 @@ public class MyFragment2 extends Fragment{
         mViewPager = (ViewPager) layout.findViewById(R.id.pager2);
         mViewPager.setAdapter(mCustomPagerAdapter);
 
-        //모든 스크린에 최적화
+        //화면 가로 픽셀
         DisplayMetrics dM = getResources().getDisplayMetrics();
         widthOfScreen = dM.widthPixels;
-        int widthOfView = 300; //in DP
-        int spaceBetweenViews = 20; // in DP
-        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
-        mViewPager.setPageMargin((int) (-widthOfScreen +offset));
 
-//        mViewPager.setPageMargin((int) (-widthOfScreen / 5));
+        //화면 가로 px -> dp
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        int widthOfView = (int)((widthOfScreen - 0.5f)/scale); //in DP
+
+        //적절하게 마진 설정
+        int spaceBetweenViews = -80; // in DP
+        float offset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthOfView+spaceBetweenViews, dM);
+        mViewPager.setPageMargin((int) (-widthOfScreen+offset));
+
         mViewPager.setOffscreenPageLimit(5);
         mViewPager.setClipChildren(false);
 

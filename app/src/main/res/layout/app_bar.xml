@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title_activity_main"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="@dimen/activity_title_text_size"
         android:textColor="@color/icons"
         android:layout_gravity="center"
         android:id="@+id/toolbar_title" />

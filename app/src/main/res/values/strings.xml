@@ -44,4 +44,6 @@
         <item>범죄등록</item>
         <item>범죄목록</item>
     </string-array>
+    <string name="title_activity_myham">MY HAM</string>
+    <string name="title_activity_membership_guide"></string>
 </resources>

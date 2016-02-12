@@ -14,10 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.activities.MyhamActivity;
 import com.example.young_jin.supportproject.fragmnets.CrimeFragment;
 import com.example.young_jin.supportproject.fragmnets.MyHamFragment;
 
@@ -42,6 +44,8 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
     private TextView username;
     public static final String DRAWABLES_PATH = ":values/";
     private String[] titles;
+    private TextView myham;
+    private LinearLayout logoff;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -66,6 +70,26 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         saveToPreferences(getActivity(), "username", "홍길동");
         username = (TextView) layout.findViewById(R.id.username);
         username.setText(readFromPreferences(getActivity(), "username", ""));
+
+        myham = (TextView) layout.findViewById(R.id.myham);
+        myham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyhamActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+            }
+        });
+
+        logoff = (LinearLayout) layout.findViewById(R.id.logoff);
+        logoff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "로그아웃", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        ((LinearLayout)layout.findViewById(R.id.containerDrawerImage)).setOnClickListener(new View.OnClickListener() {
 //            @Override

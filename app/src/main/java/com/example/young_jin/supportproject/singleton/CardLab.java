@@ -6,6 +6,7 @@ import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.models.Card;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Young-Jin on 2016-02-11.
@@ -52,6 +53,7 @@ public class CardLab {
             c.setImage(mResources[i]);
             c.setText(mStrings[i]);
             c.setColors(mAppContext.getResources().getIntArray(mColors[i]));
+            c.setDueDate(new Date(2016,04,i+1));
             mCards.add(c);
         }
         Card c = new Card();
