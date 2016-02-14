@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    sothree:umanoPanelHeight="68dp">
+    sothree:umanoPanelHeight="0dp">
 
 <LinearLayout
     android:orientation="vertical"
@@ -58,7 +58,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.74"
                 android:gravity="center"
@@ -103,7 +103,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.49"
                 android:id="@+id/second_layout">
@@ -174,13 +174,13 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="match_parent"
         android:gravity="center|top"
         android:id="@+id/third_layout">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="68dp"
+            android:layout_height="58dp"
             android:background="@color/hint"
             android:gravity="center"
             android:text="바코드"

@@ -4,7 +4,7 @@
     android:enterFadeDuration="@android:integer/config_shortAnimTime">
 
     <item android:state_focused="true" android:state_pressed="false"
-        android:drawable="@color/icons" />
+        android:drawable="@color/primary_dark" />
 
     <item android:state_focused="true" android:state_pressed="true"
         android:drawable="@color/primary" />
@@ -12,6 +12,6 @@
     <item android:state_focused="false" android:state_pressed="true"
         android:drawable="@color/primary" />
 
-    <item android:drawable="@color/icons" />
+    <item android:drawable="@color/primary_dark" />
 
 </selector> 

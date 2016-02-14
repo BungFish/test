@@ -6,10 +6,11 @@
 
     <color name="primary">#D32F2F</color>
     <color name="primary_dark">#B71C1C</color>
-    <color name="primary_light">#7986CB</color>
+    <color name="primary_light">#F44336</color>
     <color name="accent">#FFFFFF</color>
     <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
+    <color name="secondary_text">#616161</color>
+    <color name="light_black">#9E9E9E</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="hint">#CCCCCC</color>

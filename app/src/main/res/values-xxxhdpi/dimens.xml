@@ -8,14 +8,18 @@
     <dimen name="nav_title_height">100dp</dimen>
     <dimen name="nav_title_text_size">20dp</dimen>
 
-    <dimen name="nav_menu_height">220dp</dimen>
+    <dimen name="nav_menu_height">217dp</dimen>
 
-    <dimen name="nav_menu_margin_top">20dp</dimen>
+    <dimen name="nav_menu_margin_top">12dp</dimen>
+    <dimen name="nav_menu_margin_botoom">12dp</dimen>
     <dimen name="nav_menu_image_margin_left_right">30dp</dimen>
     <dimen name="nav_menu_image_size">30dp</dimen>
     <dimen name="nav_menu_text_size">18dp</dimen>
+    <dimen name="nav_menu_carrot_margin_left_right">15dp</dimen>
 
-    <dimen name="item_offset">5dp</dimen>
+    <dimen name="item_offset">8dp</dimen>
+    <dimen name="item2_offset">15dp</dimen>
+    <dimen name="circular_offset">15dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="text_size">12dp</dimen>

@@ -1,11 +1,13 @@
 package com.example.young_jin.supportproject;
 
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
+
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,11 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.activities.MembershipGuideActivity;
 import com.example.young_jin.supportproject.activities.MyhamActivity;
 import com.example.young_jin.supportproject.fragmnets.CrimeFragment;
 import com.example.young_jin.supportproject.fragmnets.MyHamFragment;
@@ -46,6 +48,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
     private String[] titles;
     private TextView myham;
     private LinearLayout logoff;
+    private int menu_state = -1;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -87,7 +90,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         logoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "로그아웃", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "로그아웃", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -187,35 +190,43 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 
     @Override
     public void itemClick(View view, int position) {
-
-        switch (position){
-            case 0:
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
+        if(menu_state == position) {
+            Toast.makeText(getActivity(), "같은 메뉴입니다.", Toast.LENGTH_SHORT).show();
+        } else {
+            switch (position) {
+                case 0:
+                    menu_state = 0;
+                    getActivity().getFragmentManager()
+                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, MyFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
-                break;
-            case 1:
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
+                    break;
+                case 1:
+                    menu_state = 1;
+                    getActivity().getFragmentManager()
+                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, MyFragment2.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
-                break;
-            case 2:
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
+                    break;
+                case 2:
+                    menu_state = 2;
+                    getActivity().getFragmentManager()
+                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
-                break;
-            case 3:
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_context, MyHamFragment.newInstance()).commit();
-                mDrawerLayout.closeDrawer(containerView);
-                break;
-            default:
-                Toast.makeText(getActivity(), "개발중인 메뉴입니다 조금만 기다려주세요!", Toast.LENGTH_SHORT).show();
-                break;
+                    break;
+                case 3:
+                    Intent intent = new Intent(getActivity(), MembershipGuideActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    getActivity().startActivity(intent);
+
+                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+                    mDrawerLayout.closeDrawer(containerView);
+                    break;
+                default:
+                    Toast.makeText(getActivity(), "개발중인 메뉴입니다 조금만 기다려주세요!", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
 }

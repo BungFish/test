@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  * Created by Young-Jin on 2016-02-02.
  */
-class CustomPagerAdapter extends PagerAdapter {
+public class CustomPagerAdapter extends PagerAdapter {
 
     int[] mResources = {
             R.drawable.card1,
@@ -120,7 +120,7 @@ class CustomPagerAdapter extends PagerAdapter {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 //                activity.startActivity(intent);
 
-                Intent intent = new Intent(activity, MembershipGuideActivity.class);
+                Intent intent = new Intent(activity, MyhamActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 activity.startActivity(intent);
 

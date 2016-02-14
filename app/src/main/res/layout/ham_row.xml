@@ -4,17 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:clickable="true"
-    android:gravity="center"
-    android:layout_marginRight="18dp">
+    android:gravity="center">
 
     <RelativeLayout
-        android:layout_width="@dimen/circular_width_size" android:layout_height="0dp" android:layout_weight="0.7" >
+            android:layout_width="@dimen/circular_width_size" android:layout_height="@dimen/circular_height_size" >
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="@dimen/circular_width_size"
             android:layout_height="@dimen/circular_height_size"
-            android:layout_centerInParent="true"
             android:max="10"
             android:progress="7"
             android:rotation="-90"
@@ -31,12 +29,10 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
         android:text="주유리터당\n할인"
         android:textSize="@dimen/text_size"
         android:textColor="@color/icons"
-        android:layout_gravity="center"
         android:gravity="center"
         android:id="@+id/textView18" />
 

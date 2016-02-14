@@ -16,6 +16,7 @@ import com.example.young_jin.supportproject.MyFragment;
 import com.example.young_jin.supportproject.MyFragment2;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.adapter.MyAdapter;
+import com.example.young_jin.supportproject.fragmnets.MembershipGuideFragment;
 
 public class MembershipGuideActivity extends AppCompatActivity {
 
@@ -37,9 +38,9 @@ public class MembershipGuideActivity extends AppCompatActivity {
 //        getSupportActionBar().setTitle("");
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MyFragment(), "멤버쉽 안내");
-        adapter.addFragment(new MyFragment2(), "제휴 안내");
+        MyAdapter adapter = new MyAdapter(getFragmentManager());
+        adapter.addFragment(new MembershipGuideFragment(), "멤버쉽 안내");
+        adapter.addFragment(new MyFragment2().newInstance(), "제휴 안내");
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);

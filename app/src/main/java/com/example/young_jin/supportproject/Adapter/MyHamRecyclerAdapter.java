@@ -3,8 +3,11 @@ package com.example.young_jin.supportproject.adapter;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +24,8 @@ import java.util.ArrayList;
 public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
+    private final Animation card_selected_animation;
+    private final Animation card_unselected_animation;
     private ArrayList<Card> data;
     private Activity activity;
     private ClickListener clickListener;
@@ -38,6 +43,9 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
         inflater = LayoutInflater.from(activity);
         this.data = CardLab.get(activity).getmCards();
         this.activity = activity;
+
+        card_selected_animation = AnimationUtils.loadAnimation(activity, R.anim.card_selected);
+        card_unselected_animation = AnimationUtils.loadAnimation(activity, R.anim.card_unselected);
     }
 
     @Override
@@ -54,9 +62,31 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
 
         holder.myHamCard.setImageDrawable(activity.getResources().getDrawable(data.get(position).getImage()));
         holder.card_name.setText(data.get(position).getText());
-        if(position == getItemCount()-1){
 
-        }
+        holder.myHamCard.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        holder.myHamCard.startAnimation(card_selected_animation);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        holder.myHamCard.startAnimation(card_unselected_animation);
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        holder.myHamCard.startAnimation(card_unselected_animation);
+                        break;
+
+                }
+                return false;
+            }
+        });
+
+//        if(position == getItemCount()-1){
+//
+//        }
+
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -63,7 +63,7 @@ public class MyFragment2 extends Fragment{
         widthOfScreen = dM.widthPixels;
 
         //화면 가로 px -> dp
-        final float scale = getContext().getResources().getDisplayMetrics().density;
+        final float scale = getActivity().getResources().getDisplayMetrics().density;
         int widthOfView = (int)((widthOfScreen - 0.5f)/scale); //in DP
 
         //적절하게 마진 설정

@@ -5,7 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.CircularOffsetDecoration;
 import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
 import com.example.young_jin.supportproject.adapter.MyHamRecyclerAdapter;
 import com.example.young_jin.supportproject.ItemOffsetDecoration;
@@ -101,6 +102,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
         mMyHamAdapter.setClickListener(this);
         mMyHamRecyclerView.setAdapter(mMyHamAdapter);
 
+
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.item_offset);
         mMyHamRecyclerView.addItemDecoration(itemDecoration);
 
@@ -111,6 +113,9 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
         adapter = new HamRecyclerAdapter(getActivity());
         recyclerView.setAdapter(adapter);
+
+        CircularOffsetDecoration circularDecoration = new CircularOffsetDecoration(getActivity(), R.dimen.circular_offset);
+        recyclerView.addItemDecoration(circularDecoration);
 
         int[] colors = getResources().getIntArray(mColors[1]);
 
@@ -141,24 +146,20 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
         rd = new Random();
 
-        fadeIn = new AlphaAnimation(0, 1);
-        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-        fadeIn.setDuration(700);
+//        fadeIn = new AlphaAnimation(0, 1);
+//        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+//        fadeIn.setDuration(1000);
+//
+//        Animation fadeOut = new AlphaAnimation(1, 0);
+//        fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+//        fadeOut.setStartOffset(1000);
+//        fadeOut.setDuration(1000);
+//
+//        AnimationSet animation = new AnimationSet(false); //change to false
+//        animation.addAnimation(fadeIn);
+//        animation.addAnimation(fadeOut);
 
-        Animation fadeOut = new AlphaAnimation(1, 0);
-        fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-        fadeOut.setStartOffset(1000);
-        fadeOut.setDuration(1000);
-
-        AnimationSet animation = new AnimationSet(false); //change to false
-        animation.addAnimation(fadeIn);
-        animation.addAnimation(fadeOut);
-
-        mainLayout.setAnimation(fadeIn);
-
-        anim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
-
-
+        anim = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
 
 // Inflate the layout for this fragment
         return layout;
