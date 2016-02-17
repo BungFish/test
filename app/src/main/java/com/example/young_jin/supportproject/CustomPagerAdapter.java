@@ -99,8 +99,8 @@ public class CustomPagerAdapter extends PagerAdapter {
 
         //레이아웃 가로 길이 설정
         View view_instance = (View)mainLayout;
-        ViewGroup.LayoutParams params=view_instance.getLayoutParams();
-        params.width = widthOfScreen-pixels;
+        ViewGroup.LayoutParams params = view_instance.getLayoutParams();
+        params.width = widthOfScreen - pixels;
         view_instance.setLayoutParams(params);
 
         LinearLayout firstLayout = (LinearLayout) itemView.findViewById(R.id.first_layout);
