@@ -27,4 +27,5 @@ dependencies {
     compile 'com.jpardogo.materialtabstrip:library:1.1.0'
     compile 'com.sothree.slidinguppanel:library:3.2.1'
     compile 'com.android.support:support-v13:+'
+    compile 'com.skyfishjy.ripplebackground:library:1.0.1'
 }

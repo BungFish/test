@@ -42,6 +42,7 @@
         <item>@color/blue_dark</item>
         <item>@color/blue_darkest</item>
     </array>
-    
+
+    <color name="rippelColor">#0099CC</color>
 
 </resources>

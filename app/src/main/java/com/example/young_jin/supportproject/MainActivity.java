@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.skyfishjy.library.RippleBackground;
+
 
 public class MainActivity extends ActionBarActivity {
 
