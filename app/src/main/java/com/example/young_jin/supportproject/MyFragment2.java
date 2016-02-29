@@ -1,10 +1,7 @@
 package com.example.young_jin.supportproject;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -20,7 +17,7 @@ import android.widget.Toast;
 /**
  * Created by Young-Jin on 2016-02-02.
  */
-public class MyFragment2 extends Fragment{
+public class MyFragment2 extends Fragment {
 
     private ViewPager mViewPager;
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -83,42 +80,42 @@ public class MyFragment2 extends Fragment{
 //            }
 //        });
 
-        Button details_button = (Button) layout.findViewById(R.id.details_button);
-        details_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "기능 미완성", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Button details_button = (Button) layout.findViewById(R.id.details_button);
+//        details_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "기능 미완성", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        mCustomPagerAdapter2 = new CustomPagerAdapter2(getActivity());
-
-        mViewPager2 = (ViewPager) layout.findViewById(R.id.pager3);
-        mViewPager2.setAdapter(mCustomPagerAdapter2);
-
-        mViewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                for (int i = 0; i < dotsCount; i++) {
-                    dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
-                }
-
-                dots[position].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        pager_indicator = (LinearLayout) layout.findViewById(R.id.viewPagerCountDots);
-        setUiPageViewController();
+//        mCustomPagerAdapter2 = new CustomPagerAdapter2(getActivity());
+//
+//        mViewPager2 = (ViewPager) layout.findViewById(R.id.pager3);
+//        mViewPager2.setAdapter(mCustomPagerAdapter2);
+//
+//        mViewPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                for (int i = 0; i < dotsCount; i++) {
+//                    dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
+//                }
+//
+//                dots[position].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+//
+//        pager_indicator = (LinearLayout) layout.findViewById(R.id.viewPagerCountDots);
+//        setUiPageViewController();
 
 // Inflate the layout for this fragment
         return layout;

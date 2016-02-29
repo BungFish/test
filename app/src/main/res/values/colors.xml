@@ -15,6 +15,10 @@
     <color name="divider">#B6B6B6</color>
     <color name="hint">#CCCCCC</color>
 
+    <color name="grey_light">#EEEEEE</color>
+    <color name="grey_normal">#E0E0E0</color>
+    <color name="grey_dark">#BDBDBD</color>
+
     <color name="orange">#F57C00</color>
     <color name="orange_dark">#EF6C00</color>
     <color name="orange_darkest">#E65100</color>

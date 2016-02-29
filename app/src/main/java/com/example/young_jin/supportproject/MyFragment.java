@@ -4,7 +4,7 @@ package com.example.young_jin.supportproject;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -23,7 +25,7 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 /**
  * Created by Young-Jin on 2016-02-02.
  */
-public class MyFragment extends Fragment{
+public class MyFragment extends Fragment {
 
     private int widthOfScreen;
     private CustomPagerAdapter2 mCustomPagerAdapter;
@@ -105,12 +107,12 @@ public class MyFragment extends Fragment{
         LinearLayout firstLayout = (LinearLayout) layout.findViewById(R.id.first_layout);
         firstLayout.setBackgroundColor(colors[0]);
 
-        firstLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-            }
-        });
+//        firstLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+//            }
+//        });
 
         LinearLayout secondLayout = (LinearLayout) layout.findViewById(R.id.second_layout);
         secondLayout.setBackgroundColor(colors[1]);
@@ -173,7 +175,7 @@ public class MyFragment extends Fragment{
 
             }
         });
-
+//
         pager_indicator = (LinearLayout) layout.findViewById(R.id.viewPagerCountDots);
         setUiPageViewController();
 

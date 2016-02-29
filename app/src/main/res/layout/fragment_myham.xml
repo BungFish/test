@@ -13,9 +13,20 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="?android:attr/actionBarSize"></LinearLayout>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/grey_normal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="나의보유카드"
+                android:textStyle="bold"
+                android:textSize="14dp" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,9 +43,11 @@
 
         <LinearLayout
             android:id="@+id/main_layout"
+            android:layout_marginLeft="@dimen/defualt_margin"
+            android:layout_marginRight="@dimen/defualt_margin"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.59"
+            android:layout_weight="0.44"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -42,31 +55,15 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.65"
-                android:gravity="center"
+                android:layout_weight="0.45"
+                android:gravity="center_vertical"
+                android:background="@color/primary"
                 android:id="@+id/first_layout">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:paddingTop="24dp"
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
-                    android:id="@+id/ham_card"
-                    android:layout_gravity="center"
-                    android:src="@drawable/card2"
-                    android:layout_weight="0.55" />
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.45"
-                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         android:text="HAM Basic Card"
                         android:textSize="24dp"
                         android:textColor="@color/icons"
@@ -76,18 +73,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
                         android:text="유효기한: ~16.02.02"
                         android:textSize="16dp"
                         android:textColor="@color/icons"
                         android:gravity="center"/>
-                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.35"
+                android:layout_weight="0.55"
                 android:id="@+id/second_layout">
 
                 <android.support.v7.widget.RecyclerView
@@ -117,99 +115,92 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.03">
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center|bottom">-->
 
-        </LinearLayout>
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:id="@+id/show_card"-->
+                <!--android:src="@drawable/card1"/>-->
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center|bottom">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:id="@+id/show_card"
-                android:src="@drawable/card1"/>
-
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:gravity="center">
+            android:layout_weight="0.33"
+            android:gravity="center"
+            android:layout_margin="@dimen/defualt_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="서비스내역"
-                    android:textColor="@color/icons"
-                    android:textSize="@dimen/text_size"
-                    android:background="@drawable/button_background"
+                    android:textSize="@dimen/abc_text_size_menu_material"
+                    android:textColor="@color/secondary_text"
+                    android:background="@drawable/border_background"
                     android:id="@+id/button"
                     android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"/>
-
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="이용 내역"
-                    android:textColor="@color/icons"
-                    android:textSize="@dimen/text_size"
-                    android:background="@drawable/button_background"
+                    android:textSize="@dimen/abc_text_size_menu_material"
+                    android:textColor="@color/secondary_text"
+                    android:background="@drawable/border_background"
                     android:id="@+id/button2"
                     android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"/>
+=
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="구매 목록"
-                    android:textColor="@color/icons"
-                    android:textSize="@dimen/text_size"
-                    android:background="@drawable/button_background"
+                    android:layout_height="match_parent"
+                    android:text="구매/연장목록"
+                    android:textSize="@dimen/abc_text_size_menu_material"
+                    android:textColor="@color/secondary_text"
+                    android:background="@drawable/border_background"
                     android:id="@+id/button3"
                     android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="카드등록"
+                    android:textSize="@dimen/abc_text_size_menu_material"
+                    android:textColor="@color/secondary_text"
+                    android:background="@drawable/border_background"
+                    android:id="@+id/button4"
+                    android:layout_weight="1" />
+
+                =
             </LinearLayout>
 
-            <!--<LinearLayout-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-
-                <!--<Button-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="카드 등록"-->
-                    <!--android:textSize="@dimen/text_size"-->
-                    <!--android:id="@+id/button4"-->
-                    <!--android:layout_weight="1" />-->
-            <!--</LinearLayout>-->
         </LinearLayout>
 
-        <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-        </LinearLayout>
+        <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="48dp">-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

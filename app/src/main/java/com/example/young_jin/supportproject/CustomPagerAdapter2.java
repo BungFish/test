@@ -48,7 +48,7 @@ public class CustomPagerAdapter2 extends PagerAdapter {
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         imageView.setImageBitmap(
-                decodeSampledBitmapFromResource(itemView.getResources(), mResources[position], 100, 100));
+                decodeSampledBitmapFromResource(itemView.getResources(), mResources[position], 1000, 1000));
 
         container.addView(itemView);
 

@@ -7,8 +7,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,9 @@ import com.example.young_jin.supportproject.fragmnets.MembershipGuideFragment;
 
 public class MembershipGuideActivity extends AppCompatActivity {
 
+    private Button filter_distance;
+    private Button filter_price;
+
     @Override
     public void finish() {
         super.finish();
@@ -30,31 +35,57 @@ public class MembershipGuideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_membership_guide);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-//        TextView toolbar_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-//        toolbar_title.setText(getSupportActionBar().getTitle());
-//        getSupportActionBar().setTitle("");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+        filter_distance = (Button) toolbar.findViewById(R.id.filter_distance);
+        filter_price = (Button) toolbar.findViewById(R.id.filter_price);
+
+        filter_distance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filter_distance.setBackgroundColor(getResources().getColor(R.color.icons));
+                filter_distance.setTextColor(getResources().getColor(R.color.primary));
+
+                filter_price.setBackgroundColor(getResources().getColor(R.color.primary));
+                ;
+                filter_price.setTextColor(getResources().getColor(R.color.icons));
+            }
+        });
+
+        filter_price.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filter_distance.setBackgroundColor(getResources().getColor(R.color.primary));
+                filter_distance.setTextColor(getResources().getColor(R.color.icons));
+
+                filter_price.setBackgroundColor(getResources().getColor(R.color.icons));
+                filter_price.setTextColor(getResources().getColor(R.color.primary));
+            }
+        });
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        MyAdapter adapter = new MyAdapter(getFragmentManager());
-        adapter.addFragment(new MembershipGuideFragment(), "멤버쉽 안내");
-        adapter.addFragment(new MyFragment2().newInstance(), "제휴 안내");
+        MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
+        adapter.addFragment(new MembershipGuideFragment(), "포인트 활용형");
+        adapter.addFragment(new MyFragment2().newInstance(), "제휴사 기프트형");
+        adapter.addFragment(new MyFragment().newInstance(), "체크/신용카드형");
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_membership_guide, menu);
+        return true;
     }
 
     @Override

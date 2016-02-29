@@ -1,7 +1,7 @@
 package com.example.young_jin.supportproject.fragmnets;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +23,7 @@ import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
 /**
  * Created by Young-Jin on 2016-02-14.
  */
-public class MembershipGuideFragment extends Fragment{
+public class MembershipGuideFragment extends Fragment {
 
     private ViewPager mViewPager;
     private int widthOfScreen;

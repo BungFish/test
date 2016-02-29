@@ -29,6 +29,7 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
     private ArrayList<Card> data;
     private Activity activity;
     private ClickListener clickListener;
+    private int mSelectedCard;
 
     int[] mResources = {
             R.drawable.card1,
@@ -67,21 +68,28 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                switch (event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        holder.myHamCard.startAnimation(card_selected_animation);
+//                        holder.myHamCard.startAnimation(card_selected_animation);
                         break;
                     case MotionEvent.ACTION_UP:
-                        holder.myHamCard.startAnimation(card_unselected_animation);
+//                        holder.myHamCard.startAnimation(card_unselected_animation);
+                        mSelectedCard = position;
                         break;
                     case MotionEvent.ACTION_CANCEL:
-                        holder.myHamCard.startAnimation(card_unselected_animation);
+//                        holder.myHamCard.startAnimation(card_unselected_animation);
                         break;
 
                 }
                 return false;
             }
         });
+
+        if(mSelectedCard == position) {
+            holder.myHamCard.setAlpha(1f);
+        } else {
+            holder.myHamCard.setAlpha(0.5f);
+        }
 
 //        if(position == getItemCount()-1){
 //

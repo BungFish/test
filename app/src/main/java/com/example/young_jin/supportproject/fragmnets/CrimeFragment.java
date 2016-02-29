@@ -1,17 +1,17 @@
 package com.example.young_jin.supportproject.fragmnets;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.example.young_jin.supportproject.MyFragment;
 import com.example.young_jin.supportproject.R;
 
 import java.lang.reflect.Field;
@@ -56,7 +56,7 @@ public class CrimeFragment extends Fragment {
         return v;
     }
 
-    class MyPagerAdapter extends android.support.v13.app.FragmentPagerAdapter {
+    class MyPagerAdapter extends FragmentPagerAdapter {
 
         String[] tabTitle;
 

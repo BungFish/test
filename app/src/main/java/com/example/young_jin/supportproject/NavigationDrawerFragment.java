@@ -1,13 +1,13 @@
 package com.example.young_jin.supportproject;
 
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -196,21 +196,21 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
             switch (position) {
                 case 0:
                     menu_state = 0;
-                    getActivity().getFragmentManager()
+                    getFragmentManager()
                             .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, MyFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
                     break;
                 case 1:
                     menu_state = 1;
-                    getActivity().getFragmentManager()
+                    getFragmentManager()
                             .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, MyFragment2.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);
                     break;
                 case 2:
                     menu_state = 2;
-                    getActivity().getFragmentManager()
+                    getFragmentManager()
                             .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                             .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
                     mDrawerLayout.closeDrawer(containerView);

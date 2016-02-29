@@ -6,8 +6,8 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -31,7 +31,7 @@ import java.util.Locale;
 /**
  * Created by Young-Jin on 2016-02-09.
  */
-public class CrimeAddFragment extends Fragment{
+public class CrimeAddFragment extends Fragment {
 
     private EditText mTitleField;
     private Button mDateButton;

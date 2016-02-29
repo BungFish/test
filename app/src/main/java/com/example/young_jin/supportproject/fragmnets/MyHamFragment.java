@@ -55,7 +55,6 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
     private RecyclerView mMyHamRecyclerView;
     private MyHamRecyclerAdapter mMyHamAdapter;
     private LinearLayoutManager mMyHamlinearLayoutManager;
-    private ImageView ham_card;
     private TextView card_name;
     private LinearLayout firstLayout;
     private LinearLayout secondLayout;
@@ -90,7 +89,6 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
 
         coordinatorLayout = (CoordinatorLayout)layout.findViewById(R.id.coordinatorLayout);
-        ham_card = (ImageView) layout.findViewById(R.id.ham_card);
         card_name = (TextView) layout.findViewById(R.id.card_name);
 
         mMyHamRecyclerView = (RecyclerView) layout.findViewById(R.id.myham_list);
@@ -117,7 +115,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
         CircularOffsetDecoration circularDecoration = new CircularOffsetDecoration(getActivity(), R.dimen.circular_offset);
         recyclerView.addItemDecoration(circularDecoration);
 
-        int[] colors = getResources().getIntArray(mColors[1]);
+        int[] colors = getResources().getIntArray(mColors[0]);
 
         mainLayout = (LinearLayout) layout.findViewById(R.id.main_layout);
 
@@ -127,22 +125,22 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
         secondLayout = (LinearLayout) layout.findViewById(R.id.second_layout);
         secondLayout.setBackgroundColor(colors[1]);
 
-        ImageView show_card = (ImageView) layout.findViewById(R.id.show_card);
+//        ImageView show_card = (ImageView) layout.findViewById(R.id.show_card);
 
-        show_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Dialog dialog = new Dialog(getActivity());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                dialog.setContentView(R.layout.show_card);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.show();
-
-
-            }
-        });
+//        show_card.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Dialog dialog = new Dialog(getActivity());
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//                dialog.setContentView(R.layout.show_card);
+//                dialog.setCanceledOnTouchOutside(true);
+//                dialog.show();
+//
+//
+//            }
+//        });
 
         rd = new Random();
 
@@ -174,8 +172,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
             mainLayout.startAnimation(anim);
 
             firstLayout.setBackgroundColor(card.getColors()[0]);
-            secondLayout.setBackgroundColor(card.getColors()[1]);
-            ham_card.setImageDrawable(getResources().getDrawable(card.getImage()));
+            secondLayout.setBackgroundColor(card.getColors()[2]);
             card_name.setText(card.getText());
 
             firstLayout.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +182,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
                 }
             });
 
-            if(position==1||position==3) {
+            if(position == 1 || position == 3) {
                 snackbar = Snackbar.make(coordinatorLayout, card.getDueDate().getYear() + "년 " + card.getDueDate().getMonth() + "월 " + card.getDueDate().getDay() + "일" + "에 만료됩니다.", Snackbar.LENGTH_INDEFINITE)
                         .setAction("연장", new View.OnClickListener() {
                             @Override
@@ -202,6 +199,8 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
                     snackbar.dismiss();
                 }
             }
+
+            mMyHamAdapter.notifyDataSetChanged();
         }
     }
 

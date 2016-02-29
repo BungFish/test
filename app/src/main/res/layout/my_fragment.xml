@@ -15,29 +15,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
+        android:layout_height="wrap_content">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <!--<android.support.v4.view.ViewPager-->
+            <!--android:id="@+id/pager"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.young_jin.supportproject.WrapContentHeightViewPager"
+            android:id="@+id/pager" />
 
         <RelativeLayout
             android:id="@+id/viewPagerIndicator"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="5dp"
+            android:layout_alignBottom="@+id/pager"
             android:gravity="center">
 
-            <LinearLayout
-                android:id="@+id/viewPagerCountDots"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:orientation="horizontal" />
+        <LinearLayout
+            android:id="@+id/viewPagerCountDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" />
 
         </RelativeLayout>
 
@@ -52,7 +56,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.64"
+        android:layout_weight="0.77"
+        android:layout_marginLeft="@dimen/defualt_margin"
+        android:layout_marginRight="@dimen/defualt_margin"
         android:orientation="vertical"
         android:gravity="center">
 
@@ -139,7 +145,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.03">
+        android:layout_weight="0.2">
 
     </LinearLayout>
 

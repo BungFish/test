@@ -79,11 +79,11 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
                 decodeSampledBitmapFromResource(activity.getResources(), mResources[position], 100, 100));
         holder.card_name.setText(card_names[position]);
 
-        int[] colors = activity.getResources().getIntArray(mColors[position]);
-
-        holder.firstLayout.setBackgroundColor(colors[0]);
-        holder.secondLayout.setBackgroundColor(colors[1]);
-        holder.thirdLayout.setBackgroundColor(colors[2]);
+//        int[] colors = activity.getResources().getIntArray(mColors[position]);
+//
+//        holder.firstLayout.setBackgroundColor(colors[0]);
+//        holder.secondLayout.setBackgroundColor(colors[1]);
+//        holder.thirdLayout.setBackgroundColor(colors[2]);
 
         holder.thirdLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,16 +128,16 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
 
             //화면 가로 픽셀
             DisplayMetrics dM = activity.getResources().getDisplayMetrics();
-            int widthOfScreen = dM.widthPixels;
+            int heightOfScreen = dM.heightPixels;
 
-            //마진 dp to px
-            final float scale = activity.getResources().getDisplayMetrics().density;
-            int pixels = (int) ((50*2) * scale + 0.5f);
+//            //마진 dp to px
+//            final float scale = activity.getResources().getDisplayMetrics().density;
+//            int pixels = (int) ((200) * scale + 0.5f);
 
             //레이아웃 가로 길이 설정
             View view_instance = (View) mainLayout;
             ViewGroup.LayoutParams params=view_instance.getLayoutParams();
-            params.width = widthOfScreen-pixels;
+            params.height = (int) (heightOfScreen * 0.6);
             view_instance.setLayoutParams(params);
 
             firstLayout = (LinearLayout) itemView.findViewById(R.id.first_layout);
