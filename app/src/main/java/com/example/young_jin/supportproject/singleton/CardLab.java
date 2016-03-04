@@ -14,12 +14,12 @@ import java.util.Date;
 public class CardLab {
 
     int[] mResources = {
-            R.drawable.card1,
-            R.drawable.card2,
-            R.drawable.card3,
-            R.drawable.card1,
-            R.drawable.card2,
-            R.drawable.card3
+            R.drawable.membership_card_sm,
+            R.drawable.membership_card_basic,
+            R.drawable.membership_card_drive,
+            R.drawable.membership_card_sm,
+            R.drawable.membership_card_basic,
+            R.drawable.membership_card_drive
     };
 
     String[] mStrings = {
@@ -48,7 +48,7 @@ public class CardLab {
     public CardLab(Context mAppContext) {
         this.mAppContext = mAppContext;
         mCards = new ArrayList<Card>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 2; i++) {
             Card c = new Card();
             c.setImage(mResources[i]);
             c.setText(mStrings[i]);
@@ -57,7 +57,7 @@ public class CardLab {
             mCards.add(c);
         }
         Card c = new Card();
-        c.setImage(R.drawable.ic_add_white_24dp);
+        c.setImage(R.drawable.myham_card_add);
         c.setText("카드 추가");
         c.setColors(mAppContext.getResources().getIntArray(mColors[0]));
         mCards.add(c);

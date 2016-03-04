@@ -2,15 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.young_jin.supportproject">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait">>
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,23 +22,36 @@
         <activity
             android:name=".activities.MyhamActivity"
             android:label="@string/title_activity_myham"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.young_jin.supportproject.MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
         <activity
             android:name=".activities.MembershipGuideActivity"
             android:label="@string/title_activity_membership_guide"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.young_jin.supportproject.MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.SomethingMoreActivity"
+            android:label="@string/title_activity_something_more"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CardDetailActivity"
+            android:label="@string/title_activity_card_detail"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity android:name=".activities.LoginActivity"></activity>
     </application>
 
 </manifest>

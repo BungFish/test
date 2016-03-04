@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="Widget.Button.Colored.Primary" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/icons</item>
+        <item name="colorButtonNormal">@color/primary</item>
+    </style>
+
+    <style name="Widget.Button.Colored.Blue" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/icons</item>
+        <item name="colorButtonNormal">@color/blue</item>
+    </style>
+
     <style name="Widget.AppCompat.DrawerArrowToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/icons</item>
     </style>
@@ -19,6 +29,15 @@
     <style name="TextAppearance.Design.Snackbar.Message" parent="android:TextAppearance">
         <item name="android:textSize">@dimen/snackbar_text_size</item>
         <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="PauseDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_top</item>
     </style>
 
 </resources>

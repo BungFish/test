@@ -8,17 +8,15 @@ import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
-import com.example.young_jin.supportproject.activities.MyhamActivity;
+import com.example.young_jin.supportproject.activities.CardDetailActivity;
 import com.example.young_jin.supportproject.models.Card;
 import com.example.young_jin.supportproject.singleton.CardLab;
 
@@ -30,6 +28,7 @@ import java.util.ArrayList;
 public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
+    private final ImageCache imageCache;
     private ArrayList<Card> data;
     private Activity activity;
     private ClickListener clickListener;
@@ -61,6 +60,7 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
         this.data = CardLab.get(activity).getmCards();
         this.activity = activity;
 
+        imageCache = new ImageCache(activity);
         card_names = activity.getResources().getStringArray(R.array.card_names);
     }
 
@@ -75,8 +75,7 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.imageView.setImageBitmap(
-                decodeSampledBitmapFromResource(activity.getResources(), mResources[position], 100, 100));
+        imageCache.loadBitmap(mResources[position], holder.imageView);
         holder.card_name.setText(card_names[position]);
 
 //        int[] colors = activity.getResources().getIntArray(mColors[position]);
@@ -89,7 +88,7 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(activity, MyhamActivity.class);
+                Intent intent = new Intent(activity, CardDetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 activity.startActivity(intent);
 
@@ -173,7 +172,7 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
         this.position = position;
     }
 
-    public static int calculateInSampleSize(
+    public int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
@@ -196,7 +195,7 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
         return inSampleSize;
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
                                                          int reqWidth, int reqHeight) {
 
         // First decode with inJustDecodeBounds=true to check dimensions

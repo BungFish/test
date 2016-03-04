@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.young_jin.supportproject.activities.CardDetailActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/appbar_primary_color" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_weight="0.4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/card_info_basic"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_weight="0.6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="HAM Basic Card"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_dark"
+            android:id="@+id/second_layout">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textSize="@dimen/home_card_info_size1"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView9" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원"
+                        android:textSize="@dimen/home_card_info_size2"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView13" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주유리터당\n할인"
+                    android:textSize="@dimen/home_card_info_size3"
+                    android:textColor="@color/icons"
+                    android:gravity="center"
+                    android:id="@+id/textView16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20~30"
+                        android:textSize="@dimen/home_card_info_size1"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView10"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%"
+                        android:textSize="@dimen/home_card_info_size2"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주유리터당\n할인"
+                    android:textSize="@dimen/home_card_info_size3"
+                    android:textColor="@color/icons"
+                    android:gravity="center"
+                    android:id="@+id/textView17" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textSize="@dimen/home_card_info_size1"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView11"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원"
+                        android:textSize="@dimen/home_card_info_size2"
+                        android:textColor="@color/icons"
+                        android:id="@+id/textView15"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주유리터당\n할인"
+                    android:textSize="@dimen/home_card_info_size3"
+                    android:textColor="@color/icons"
+                    android:gravity="center"
+                    android:id="@+id/textView18" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="카드구매"
+                android:theme="@style/Widget.Button.Colored.Primary"/>
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="GIFT 카드구매"
+                android:theme="@style/Widget.Button.Colored.Blue"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

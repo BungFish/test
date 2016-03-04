@@ -3,11 +3,42 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/title_activity_main"
-        android:id="@+id/textView3" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/icons"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <Button
+                android:id="@+id/filter_distance"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@color/icons"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="멤버쉽"
+                android:textColor="@color/primary" />
+
+            <Button
+                android:id="@+id/filter_price"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="제휴"
+                android:textColor="@color/icons" />
+        </LinearLayout>
+    </LinearLayout> 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.models.Card;
 import com.example.young_jin.supportproject.singleton.CardLab;
@@ -26,18 +27,18 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
     private final LayoutInflater inflater;
     private final Animation card_selected_animation;
     private final Animation card_unselected_animation;
+    private final ImageCache imageCache;
     private ArrayList<Card> data;
     private Activity activity;
     private ClickListener clickListener;
     private int mSelectedCard;
 
     int[] mResources = {
-            R.drawable.card1,
-            R.drawable.card2,
-            R.drawable.card3,
-            R.drawable.card1,
-            R.drawable.card2,
-            R.drawable.card3
+            R.drawable.card_info_sm,
+            R.drawable.card_info_basic,
+            R.drawable.card_info_drive,
+            R.drawable.card_info_lpg,
+            R.drawable.card_info_lpg_plus,
     };
 
     public MyHamRecyclerAdapter(Activity activity) {
@@ -47,6 +48,8 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
 
         card_selected_animation = AnimationUtils.loadAnimation(activity, R.anim.card_selected);
         card_unselected_animation = AnimationUtils.loadAnimation(activity, R.anim.card_unselected);
+
+        imageCache = new ImageCache(activity);
     }
 
     @Override
@@ -60,8 +63,7 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-
-        holder.myHamCard.setImageDrawable(activity.getResources().getDrawable(data.get(position).getImage()));
+        imageCache.loadBitmap(data.get(position).getImage(), holder.myHamCard);
         holder.card_name.setText(data.get(position).getText());
 
         holder.myHamCard.setOnTouchListener(new View.OnTouchListener() {

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.young_jin.supportproject.models.DrawerMenuItemModel;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -18,11 +20,11 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
-    List<DefaultModel> data = Collections.emptyList();
+    List<DrawerMenuItemModel> data = Collections.emptyList();
     private Activity activity;
     private ClickListener clickListener;
 
-    public RecyclerAdapter(Activity activity, List<DefaultModel> data) {
+    public RecyclerAdapter(Activity activity, List<DrawerMenuItemModel> data) {
         inflater = LayoutInflater.from(activity);
         this.data = data;
         this.activity = activity;
@@ -38,7 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        DefaultModel current = data.get(position);
+        DrawerMenuItemModel current = data.get(position);
         holder.title.setText(current.getTitle());
         holder.icon.setImageResource(current.getIconId());
 

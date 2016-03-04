@@ -1,6 +1,6 @@
 package com.example.young_jin.supportproject.adapter;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +20,13 @@ public class HamRecyclerAdapter extends RecyclerView.Adapter<HamRecyclerAdapter.
 
     private final LayoutInflater inflater;
     private ArrayList<Crime> data;
-    private Activity activity;
+    private Context mContext;
     private ClickListener clickListener;
 
-    public HamRecyclerAdapter(Activity activity) {
-        inflater = LayoutInflater.from(activity);
-        this.data = CrimeLab.get(activity).getmCrimes();
-        this.activity = activity;
+    public HamRecyclerAdapter(Context mContext) {
+        inflater = LayoutInflater.from(mContext);
+        this.data = CrimeLab.get(mContext).getmCrimes();
+        this.mContext = mContext;
     }
 
     @Override

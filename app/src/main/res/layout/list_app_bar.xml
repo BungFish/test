@@ -4,45 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:background="@color/primary"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/icons"
         android:gravity="center_horizontal"
-        android:padding="1dp"
-        android:layout_margin="10dp">
+        android:orientation="horizontal">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="멤버쉽"
+            android:layout_margin="10dp"
             android:background="@color/icons"
-            android:textColor="@color/primary"
-            android:id="@+id/filter_distance"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"/>
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="1dp">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:textColor="@color/icons"
-            android:text="제휴"
-            android:id="@+id/filter_price"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"/>
+            <Button
+                android:id="@+id/filter_distance"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@color/icons"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="멤버쉽"
+                android:textColor="@color/primary" />
+
+            <Button
+                android:id="@+id/filter_price"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="제휴"
+                android:textColor="@color/icons" />
         </LinearLayout>
     </LinearLayout>
 

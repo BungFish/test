@@ -19,17 +19,19 @@
     <dimen name="nav_menu_text_size">18dp</dimen>
     <dimen name="nav_menu_carrot_margin_left_right">15dp</dimen>
 
-    <dimen name="item_offset">8dp</dimen>
+    <dimen name="item_offset">20dp</dimen>
     <dimen name="item2_offset">15dp</dimen>
     <dimen name="circular_offset">15dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="text_size">12dp</dimen>
+    <dimen name="text_size_small">12dp</dimen>
+    <dimen name="text_size">14dp</dimen>
+    <dimen name="text_size_large">16dp</dimen>
     <dimen name="snackbar_text_size">12dp</dimen>
 
     <dimen name="circular_width_size">70dp</dimen>
     <dimen name="circular_height_size">70dp</dimen>
-    <dimen name="circular_thickness">8dp</dimen>
+    <dimen name="circular_thickness">6dp</dimen>
 
     <dimen name="home_card_name_size">24dp</dimen>
     <dimen name="home_card_info_size1">24dp</dimen>

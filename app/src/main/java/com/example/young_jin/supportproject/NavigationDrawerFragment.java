@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,14 +14,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.activities.LoginActivity;
 import com.example.young_jin.supportproject.activities.MembershipGuideActivity;
 import com.example.young_jin.supportproject.activities.MyhamActivity;
-import com.example.young_jin.supportproject.fragmnets.CrimeFragment;
-import com.example.young_jin.supportproject.fragmnets.MyHamFragment;
+import com.example.young_jin.supportproject.activities.SomethingMoreActivity;
+import com.example.young_jin.supportproject.barcode.LoadBarcodeTask;
+import com.example.young_jin.supportproject.fragmnets.LoginHomeFragment;
+import com.example.young_jin.supportproject.fragmnets.LogoutHomeFragment;
+import com.example.young_jin.supportproject.models.DrawerMenuItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +53,11 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
     private TextView myham;
     private LinearLayout logoff;
     private int menu_state = -1;
+    private Intent intent;
+    private Boolean mIsLoggedIn = false;
+    private TextView nim;
+    private Toolbar toolbar;
+    private ImageView powerButton;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -72,25 +81,53 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         saveToPreferences(getActivity(), "username", "홍길동");
         username = (TextView) layout.findViewById(R.id.username);
-        username.setText(readFromPreferences(getActivity(), "username", ""));
+//        username.setText(readFromPreferences(getActivity(), "username", ""));
 
         myham = (TextView) layout.findViewById(R.id.myham);
         myham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyhamActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+                if(mIsLoggedIn) {
+                    Intent intent = new Intent(getActivity(), MyhamActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
 
-                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+                } else {
+                    Toast.makeText(getActivity(), "회원가입 페이지", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    getActivity().startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+                }
             }
         });
 
+        nim = (TextView) layout.findViewById(R.id.nim);
+
+        powerButton = (ImageView) layout.findViewById(R.id.power_button);
         logoff = (LinearLayout) layout.findViewById(R.id.logoff);
         logoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "로그아웃", Toast.LENGTH_SHORT).show();
+                if(mIsLoggedIn) {
+                    mIsLoggedIn = false;
+                    username.setText("로그인해주세요.");
+                    myham.setText("회원가입");
+                    powerButton.setColorFilter(R.color.black_opacity_soft);
+                    nim.setVisibility(View.GONE);
+                    Toast.makeText(getActivity(), "로그아웃", Toast.LENGTH_SHORT).show();
+                } else {
+                    mIsLoggedIn = true;
+                    username.setText("홍길동");
+                    myham.setText("MY HAM");
+                    powerButton.setColorFilter(getResources().getColor(R.color.red),android.graphics.PorterDuff.Mode.MULTIPLY);
+                    nim.setVisibility(View.VISIBLE);
+                    Toast.makeText(getActivity(), "로그인", Toast.LENGTH_SHORT).show();
+                    new LoadBarcodeTask().execute("87344535311", null, null);
+                    new LoadBarcodeTask().execute("78762432423", null, null);
+                    new LoadBarcodeTask().execute("23402395343", null, null);
+                }
             }
         });
 
@@ -113,13 +150,13 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         return layout;
     }
 
-    public List<DefaultModel> getData() {
-        List<DefaultModel> list = new ArrayList<>();
+    public List<DrawerMenuItemModel> getData() {
+        List<DrawerMenuItemModel> list = new ArrayList<>();
         int[] icons = {R.drawable.ic_home_white_24dp, R.drawable.ic_credit_card_white_24dp, R.drawable.ic_place_white_24dp, R.drawable.ic_more_vert_white_24dp};
 
         titles = getResources().getStringArray(R.array.category);
         for (int i = 0; i < titles.length; i++) {
-            DefaultModel current = new DefaultModel();
+            DrawerMenuItemModel current = new DrawerMenuItemModel();
 
             current.setIconId(icons[i]);
             current.setTitle(titles[i]);
@@ -130,9 +167,10 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
     }
 
 
-    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar, final RelativeLayout relativeLayout) {
         containerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
+        this.toolbar = toolbar;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -159,6 +197,8 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 //                if (slideOffset < 0.3) {
 //                    toolbar.setAlpha(1 - slideOffset);
 //                }
+                relativeLayout.setScaleX(0.95f + (1-slideOffset)*0.05f);
+                relativeLayout.setScaleY(0.95f + (1-slideOffset)*0.05f);
 
             }
         };
@@ -174,6 +214,16 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
                 mDrawerToggle.syncState();
             }
         });
+
+        if(mIsLoggedIn){
+            getFragmentManager()
+                    .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+                    .replace(R.id.main_context, LoginHomeFragment.newInstance()).commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+                    .replace(R.id.main_context, LogoutHomeFragment.newInstance()).commit();
+        }
     }
 
     public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
@@ -195,36 +245,49 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         } else {
             switch (position) {
                 case 0:
-                    menu_state = 0;
-                    getFragmentManager()
-                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
-                            .replace(R.id.main_context, MyFragment.newInstance()).commit();
+//                    menu_state = 0;
+
+                    if(mIsLoggedIn){
+                        toolbar.setBackgroundResource(R.drawable.toolbar_gradient);
+                        getFragmentManager()
+                                .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+                                .replace(R.id.main_context, LoginHomeFragment.newInstance()).commit();
+                    } else {
+                        toolbar.setBackgroundColor(getResources().getColor(R.color.background_floating_material_dark));
+                        getFragmentManager()
+                                .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+                                .replace(R.id.main_context, LogoutHomeFragment.newInstance()).commit();
+                    }
+
                     mDrawerLayout.closeDrawer(containerView);
                     break;
                 case 1:
-                    menu_state = 1;
-                    getFragmentManager()
-                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
-                            .replace(R.id.main_context, MyFragment2.newInstance()).commit();
-                    mDrawerLayout.closeDrawer(containerView);
-                    break;
-                case 2:
-                    menu_state = 2;
-                    getFragmentManager()
-                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
-                            .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
-                    mDrawerLayout.closeDrawer(containerView);
-                    break;
-                case 3:
-                    Intent intent = new Intent(getActivity(), MembershipGuideActivity.class);
+//                    menu_state = 1;
+
+                    intent = new Intent(getActivity(), MembershipGuideActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     getActivity().startActivity(intent);
-
                     getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
-                    mDrawerLayout.closeDrawer(containerView);
+
+                    break;
+//                case 2:
+//                    menu_state = 2;
+//
+//                    mDrawerLayout.closeDrawer(containerView);
+//                    break;
+                case 3:
+                    intent = new Intent(getActivity(), SomethingMoreActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    getActivity().startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+
+//                    getFragmentManager()
+//                            .beginTransaction().setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+//                            .replace(R.id.main_context, CrimeFragment.newInstance()).commit();
+//                    mDrawerLayout.closeDrawer(containerView);
                     break;
                 default:
-                    Toast.makeText(getActivity(), "개발중인 메뉴입니다 조금만 기다려주세요!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "준비중입니다.", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

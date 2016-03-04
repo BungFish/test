@@ -9,6 +9,16 @@
     <RelativeLayout
             android:layout_width="@dimen/circular_width_size" android:layout_height="@dimen/circular_height_size" >
         <ProgressBar
+            android:id="@+id/background_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/circular_width_size"
+            android:layout_height="@dimen/circular_height_size"
+            android:max="10"
+            android:progress="10"
+            android:rotation="-90"
+            android:progressDrawable="@drawable/circualr_alpha" />
+
+        <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="@dimen/circular_width_size"
@@ -28,6 +38,7 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="주유리터당\n할인"
