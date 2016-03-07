@@ -11,9 +11,6 @@ import android.widget.LinearLayout;
 import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
 
-/**
- * Created by Young-Jin on 2016-02-07.
- */
 public class BannerPagerAdapter extends PagerAdapter {
 
     Context mContext;
@@ -34,7 +31,7 @@ public class BannerPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((LinearLayout) object);
+        return view == object;
     }
 
     @Override

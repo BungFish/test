@@ -25,6 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/myham_card" />
 
@@ -32,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
                 android:text="나의보유카드"
                 android:textSize="14dp"
                 android:textStyle="bold" />

@@ -2,9 +2,6 @@ package com.example.young_jin.supportproject.models;
 
 import java.util.Date;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class Card {
     private int image;
     private String text;
@@ -12,7 +9,6 @@ public class Card {
     private Date dueDate;
 
     public Card() {
-        this.image = image;
     }
 
     public int getImage() {

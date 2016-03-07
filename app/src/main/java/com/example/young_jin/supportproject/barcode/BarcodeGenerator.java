@@ -7,9 +7,6 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
-/**
- * Created by Young-Jin on 2016-03-03.
- */
 public class BarcodeGenerator {
 
     private static final int BLACK = 0xFF000000;

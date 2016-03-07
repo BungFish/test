@@ -13,9 +13,6 @@ import com.example.young_jin.supportproject.singleton.CrimeLab;
 
 import java.util.ArrayList;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class HamRecyclerAdapter extends RecyclerView.Adapter<HamRecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
@@ -32,9 +29,8 @@ public class HamRecyclerAdapter extends RecyclerView.Adapter<HamRecyclerAdapter.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.ham_row, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
 
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -90,7 +86,7 @@ public class HamRecyclerAdapter extends RecyclerView.Adapter<HamRecyclerAdapter.
 
     public interface ClickListener {
 
-        public void itemClick(View view, int position);
+        void itemClick(View view, int position);
     }
 
     public Crime getItem(int position) {

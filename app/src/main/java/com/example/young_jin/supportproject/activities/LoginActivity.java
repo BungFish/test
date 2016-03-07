@@ -9,8 +9,6 @@ import com.example.young_jin.supportproject.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private WebView mWebView;
-
     @Override
     public void finish() {
         super.finish();
@@ -22,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mWebView = (WebView) findViewById(R.id.webview);
+        WebView mWebView = (WebView) findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("http://www.naver.com");
         mWebView.setWebViewClient(new WebViewClientClass());

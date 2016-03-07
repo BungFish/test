@@ -11,18 +11,10 @@ import android.view.ViewGroup;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.adapter.MyAdapter;
 
-/**
- * Created by Young-Jin on 2016-03-03.
- */
 public class MembershipGuideFragment2 extends Fragment {
 
-    private MyAdapter adapter;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-
     public static MembershipGuideFragment2 newInstance() {
-        MembershipGuideFragment2 fragment = new MembershipGuideFragment2();
-        return fragment;
+        return new MembershipGuideFragment2();
     }
 
     public MembershipGuideFragment2() {
@@ -40,10 +32,10 @@ public class MembershipGuideFragment2 extends Fragment {
 
         View layout = inflater.inflate(R.layout.fragment_membership_guide2, container, false);
 
-        viewPager = (ViewPager) layout.findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
+        ViewPager viewPager = (ViewPager) layout.findViewById(R.id.viewpager);
+        TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
 
-        adapter = new MyAdapter(getChildFragmentManager());
+        MyAdapter adapter = new MyAdapter(getChildFragmentManager());
         adapter.addFragment(new MembershipGuideFragment(), "포인트 활용형");
         adapter.addFragment(new MembershipGuideFragment(), "제휴사 기프트형");
         adapter.addFragment(new MembershipGuideFragment(), "체크/신용카드형");

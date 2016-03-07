@@ -1,4 +1,4 @@
-package com.example.young_jin.supportproject;
+package com.example.young_jin.supportproject.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.models.DrawerMenuItemModel;
 
 import java.util.Collections;
@@ -17,14 +18,14 @@ import java.util.List;
 /**
  * Created by Jin on 2015-06-04.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
+public class DrawerMenuAdapter extends RecyclerView.Adapter<DrawerMenuAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
     List<DrawerMenuItemModel> data = Collections.emptyList();
     private Activity activity;
     private ClickListener clickListener;
 
-    public RecyclerAdapter(Activity activity, List<DrawerMenuItemModel> data) {
+    public DrawerMenuAdapter(Activity activity, List<DrawerMenuItemModel> data) {
         inflater = LayoutInflater.from(activity);
         this.data = data;
         this.activity = activity;

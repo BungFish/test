@@ -18,7 +18,7 @@
     <dimen name="nav_menu_carrot_margin_left_right">12dp</dimen>
 
     <dimen name="item_offset">5dp</dimen>
-    <dimen name="item2_offset">10dp</dimen>
+    <dimen name="membership_offset">10dp</dimen>
     <dimen name="circular_offset">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 

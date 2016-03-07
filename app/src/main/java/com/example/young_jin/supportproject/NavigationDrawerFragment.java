@@ -24,6 +24,7 @@ import com.example.young_jin.supportproject.activities.LoginActivity;
 import com.example.young_jin.supportproject.activities.MembershipGuideActivity;
 import com.example.young_jin.supportproject.activities.MyhamActivity;
 import com.example.young_jin.supportproject.activities.SomethingMoreActivity;
+import com.example.young_jin.supportproject.adapter.DrawerMenuAdapter;
 import com.example.young_jin.supportproject.barcode.LoadBarcodeTask;
 import com.example.young_jin.supportproject.fragmnets.LoginHomeFragment;
 import com.example.young_jin.supportproject.fragmnets.LogoutHomeFragment;
@@ -36,23 +37,18 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NavigationDrawerFragment extends Fragment implements RecyclerAdapter.ClickListener {
+public class NavigationDrawerFragment extends Fragment implements DrawerMenuAdapter.ClickListener {
 
-    private RecyclerView recyclerView;
     public static final String PREF_FILE_NAME = "pref";
     public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private RecyclerAdapter adapter;
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private View containerView;
     private TextView username;
     public static final String DRAWABLES_PATH = ":values/";
-    private String[] titles;
     private TextView myham;
-    private LinearLayout logoff;
-    private int menu_state = -1;
     private Intent intent;
     private Boolean mIsLoggedIn = false;
     private TextView nim;
@@ -106,11 +102,11 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         nim = (TextView) layout.findViewById(R.id.nim);
 
         powerButton = (ImageView) layout.findViewById(R.id.power_button);
-        logoff = (LinearLayout) layout.findViewById(R.id.logoff);
+        LinearLayout logoff = (LinearLayout) layout.findViewById(R.id.logoff);
         logoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mIsLoggedIn) {
+                if (mIsLoggedIn) {
                     mIsLoggedIn = false;
                     username.setText("로그인해주세요.");
                     myham.setText("회원가입");
@@ -120,8 +116,8 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
                 } else {
                     mIsLoggedIn = true;
                     username.setText("홍길동");
-                    myham.setText("MY HAM");
-                    powerButton.setColorFilter(getResources().getColor(R.color.red),android.graphics.PorterDuff.Mode.MULTIPLY);
+                    myham.setText(getResources().getString(R.string.title_activity_myham));
+                    powerButton.setColorFilter(getResources().getColor(R.color.red), android.graphics.PorterDuff.Mode.MULTIPLY);
                     nim.setVisibility(View.VISIBLE);
                     Toast.makeText(getActivity(), "로그인", Toast.LENGTH_SHORT).show();
                     new LoadBarcodeTask().execute("87344535311", null, null);
@@ -142,8 +138,8 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 //            }
 //        });
 
-        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter = new RecyclerAdapter(getActivity(), getData());
+        RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
+        DrawerMenuAdapter adapter = new DrawerMenuAdapter(getActivity(), getData());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -154,7 +150,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         List<DrawerMenuItemModel> list = new ArrayList<>();
         int[] icons = {R.drawable.ic_home_white_24dp, R.drawable.ic_credit_card_white_24dp, R.drawable.ic_place_white_24dp, R.drawable.ic_more_vert_white_24dp};
 
-        titles = getResources().getStringArray(R.array.category);
+        String[] titles = getResources().getStringArray(R.array.category);
         for (int i = 0; i < titles.length; i++) {
             DrawerMenuItemModel current = new DrawerMenuItemModel();
 
@@ -230,7 +226,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(preferenceName, preferenceValue);
-        editor.commit();
+        editor.apply();
     }
 
     public static String readFromPreferences(Context context, String preferenceName, String preferenceValue) {
@@ -240,6 +236,7 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerAdapte
 
     @Override
     public void itemClick(View view, int position) {
+        int menu_state = -1;
         if(menu_state == position) {
             Toast.makeText(getActivity(), "같은 메뉴입니다.", Toast.LENGTH_SHORT).show();
         } else {

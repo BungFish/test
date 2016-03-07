@@ -14,24 +14,18 @@ import android.widget.RelativeLayout;
 
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.activities.LoginActivity;
-import com.example.young_jin.supportproject.adapter.HamCardPagerAdapter;
+import com.example.young_jin.supportproject.adapter.LogoutCardPagerAdapter;
 
-
-/**
- * Created by Young-Jin on 2016-02-02.
- */
 public class LogoutHomeFragment extends Fragment {
 
     private ViewPager mViewPager;
-    private HamCardPagerAdapter mHamCardPagerAdapter;
+    private LogoutCardPagerAdapter mLogoutCardPagerAdapter;
     private int widthOfScreen;
-    private RelativeLayout addHamardButton;
     private Intent intent;
     private SetPagerWidthTask setPagerWidthTask;
 
     public static LogoutHomeFragment newInstance() {
-        LogoutHomeFragment fragment = new LogoutHomeFragment();
-        return fragment;
+        return new LogoutHomeFragment();
     }
 
     public LogoutHomeFragment() {
@@ -46,8 +40,8 @@ public class LogoutHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View layout = inflater.inflate(R.layout.fragment_logout_home, null);
-        addHamardButton = (RelativeLayout) layout.findViewById(R.id.add_Hamcard_button);
+        View layout = inflater.inflate(R.layout.fragment_logout_home, container, false);
+        RelativeLayout addHamardButton = (RelativeLayout) layout.findViewById(R.id.add_Hamcard_button);
         addHamardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,8 +85,8 @@ public class LogoutHomeFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            if(mHamCardPagerAdapter == null) {
-                mHamCardPagerAdapter = new HamCardPagerAdapter(getActivity());
+            if(mLogoutCardPagerAdapter == null) {
+                mLogoutCardPagerAdapter = new LogoutCardPagerAdapter(getActivity());
             }
 
             //화면 가로 픽셀
@@ -112,7 +106,7 @@ public class LogoutHomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mViewPager.setAdapter(mHamCardPagerAdapter);
+            mViewPager.setAdapter(mLogoutCardPagerAdapter);
 
             mViewPager.setPageMargin((int) (-widthOfScreen+offset));
 

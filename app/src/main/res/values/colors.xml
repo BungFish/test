@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!--<color name="primaryColor">#E91E63</color>-->
     <!--<color name="primaryColorDark">#C2185B</color>-->
 
@@ -57,5 +57,11 @@
     </array>
 
     <color name="rippelColor">#0099CC</color>
+
+    <color name="home_gradient_start">#f5ba02</color>
+    <color name="home_gradient_end">#f50242</color>
+
+    <color name="jmong_color_top">#6a727a</color>
+    <color name="jmong_color_bottom">#303a46</color>
 
 </resources>

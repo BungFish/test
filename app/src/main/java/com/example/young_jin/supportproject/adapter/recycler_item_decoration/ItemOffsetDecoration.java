@@ -1,4 +1,4 @@
-package com.example.young_jin.supportproject;
+package com.example.young_jin.supportproject.adapter.recycler_item_decoration;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -7,9 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class ItemOffsetDecoration extends RecyclerView.ItemDecoration {
 
     private int mItemOffset;

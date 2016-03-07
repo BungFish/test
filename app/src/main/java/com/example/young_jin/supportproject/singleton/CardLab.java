@@ -8,9 +8,6 @@ import com.example.young_jin.supportproject.models.Card;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class CardLab {
 
     int[] mResources = {
@@ -47,7 +44,7 @@ public class CardLab {
 
     public CardLab(Context mAppContext) {
         this.mAppContext = mAppContext;
-        mCards = new ArrayList<Card>();
+        mCards = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             Card c = new Card();
             c.setImage(mResources[i]);

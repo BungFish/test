@@ -1,4 +1,4 @@
-package com.example.young_jin.supportproject.adapter;
+package com.example.young_jin.supportproject.adapter.trash;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -19,9 +19,6 @@ import com.example.young_jin.supportproject.singleton.CardLab;
 
 import java.util.ArrayList;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
@@ -55,9 +52,8 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.myham_row, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
 
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -140,7 +136,7 @@ public class MyHamRecyclerAdapter extends RecyclerView.Adapter<MyHamRecyclerAdap
 
     public interface ClickListener {
 
-        public void itemClick(View view, int position);
+        void itemClick(View view, int position);
     }
 
     public Card getItem(int position) {

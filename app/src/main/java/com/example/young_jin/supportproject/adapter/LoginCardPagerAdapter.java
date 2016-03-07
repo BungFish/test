@@ -12,26 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.young_jin.supportproject.CircularOffsetDecoration;
+import com.example.young_jin.supportproject.adapter.recycler_item_decoration.CircularOffsetDecoration;
 import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.barcode.LoadBarcodeTask;
-import com.example.young_jin.supportproject.custom_widget.ProgressView;
 import com.example.young_jin.supportproject.singleton.BarcodeManager;
 
-/**
- * Created by Young-Jin on 2016-03-03.
- */
-public class MyCardPagerAdapter extends PagerAdapter {
+public class LoginCardPagerAdapter extends PagerAdapter {
 
     private final ImageCache imageCache;
-    private final Animation fadeInAnim;
+
     int[] mResources = {
             R.drawable.main_card_no_sm_wh,
             R.drawable.main_card_no_basic_wh,
@@ -53,15 +47,10 @@ public class MyCardPagerAdapter extends PagerAdapter {
     String[] card_names;
     Context mContext;
     LayoutInflater mLayoutInflater;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
-    private HamRecyclerAdapter adapter;
-    private ImageView barcodeImage;
-    private ProgressView loadingIcon;
 
     private LoadBarcodeTask[] loadBarcodeTasks;
 
-    public MyCardPagerAdapter(Context context) {
+    public LoginCardPagerAdapter(Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -69,8 +58,6 @@ public class MyCardPagerAdapter extends PagerAdapter {
         loadBarcodeTasks= new LoadBarcodeTask[getCount()];
 
         card_names = mContext.getResources().getStringArray(R.array.card_names);
-
-        fadeInAnim = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
 
     }
 
@@ -81,12 +68,12 @@ public class MyCardPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((LinearLayout) object);
+        return view == (object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.mycard_pager_item, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.login_card_pager_item, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         imageCache.loadBitmap(mResources[position], imageView);
@@ -104,18 +91,18 @@ public class MyCardPagerAdapter extends PagerAdapter {
         LinearLayout secondLayout = (LinearLayout) itemView.findViewById(R.id.second_layout);
         secondLayout.setBackgroundColor(colors[1]);
 
-        recyclerView = (RecyclerView) itemView.findViewById(R.id.my_list);
-        linearLayoutManager = new LinearLayoutManager(mContext);
+        RecyclerView recyclerView = (RecyclerView) itemView.findViewById(R.id.my_list);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new HamRecyclerAdapter(mContext);
+        HamRecyclerAdapter adapter = new HamRecyclerAdapter(mContext);
         recyclerView.setAdapter(adapter);
 
         CircularOffsetDecoration circularDecoration = new CircularOffsetDecoration(mContext, R.dimen.circular_offset);
         recyclerView.addItemDecoration(circularDecoration);
 
-        barcodeImage = (ImageView) itemView.findViewById(R.id.barcode);
+        ImageView barcodeImage = (ImageView) itemView.findViewById(R.id.barcode);
         barcodeImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.main_barcode));
         barcodeImage.setOnClickListener(new View.OnClickListener() {
 

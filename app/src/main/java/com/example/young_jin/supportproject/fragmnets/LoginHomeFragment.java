@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,39 +14,23 @@ import android.widget.LinearLayout;
 
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.adapter.BannerPagerAdapter;
-import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
-import com.example.young_jin.supportproject.adapter.MyCardPagerAdapter;
+import com.example.young_jin.supportproject.adapter.LoginCardPagerAdapter;
 
-/**
- * Created by Young-Jin on 2016-02-02.
- */
 public class LoginHomeFragment extends Fragment {
 
     private int widthOfScreen;
     private BannerPagerAdapter mCustomPagerAdapter;
     private ViewPager mViewPager;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
-
-    int[] mColors = {
-            R.array.sm,
-            R.array.basic,
-            R.array.drive
-    };
-    private HamRecyclerAdapter adapter;
-    private int dotsCount;
     private ImageView[] dots;
     private ImageView[] dots2;
     private LinearLayout pager_indicator;
-    private static LoginHomeFragment fragment;
     private ViewPager myCardViewPager;
-    private MyCardPagerAdapter myCardPagerAdapter;
+    private LoginCardPagerAdapter loginCardPagerAdapter;
     private LinearLayout pager_indicator2;
     private LoadPagerAdapterTask loadPagerAdapterTask;
 
     public static LoginHomeFragment newInstance() {
-        fragment = new LoginHomeFragment();
-        return fragment;
+        return new LoginHomeFragment();
     }
 
     public LoginHomeFragment() {
@@ -64,7 +46,7 @@ public class LoginHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View layout = inflater.inflate(R.layout.fragment_login_home, null);
+        View layout = inflater.inflate(R.layout.fragment_login_home, container, false);
 
         DisplayMetrics dM = getResources().getDisplayMetrics();
         widthOfScreen = dM.widthPixels;
@@ -122,12 +104,10 @@ public class LoginHomeFragment extends Fragment {
 
     class LoadPagerAdapterTask extends AsyncTask<Void, Void, Void> {
 
-        private float offset;
-
         @Override
         protected Void doInBackground(Void... params) {
             mCustomPagerAdapter = new BannerPagerAdapter(getActivity());
-            myCardPagerAdapter = new MyCardPagerAdapter(getActivity());
+            loginCardPagerAdapter = new LoginCardPagerAdapter(getActivity());
 
             return null;
         }
@@ -135,10 +115,10 @@ public class LoginHomeFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             mViewPager.setAdapter(mCustomPagerAdapter);
-            myCardViewPager.setAdapter(myCardPagerAdapter);
+            myCardViewPager.setAdapter(loginCardPagerAdapter);
 
             dots = setUiPageViewController(pager_indicator, mCustomPagerAdapter.getCount(), R.drawable.nonselecteditem_dot, R.drawable.selecteditem_dot);
-            dots2 = setUiPageViewController(pager_indicator2, myCardPagerAdapter.getCount(), R.drawable.nonselecteditem_dot2, R.drawable.selecteditem_dot);
+            dots2 = setUiPageViewController(pager_indicator2, loginCardPagerAdapter.getCount(), R.drawable.nonselecteditem_dot2, R.drawable.selecteditem_dot);
 
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
@@ -169,7 +149,7 @@ public class LoginHomeFragment extends Fragment {
 
                 @Override
                 public void onPageSelected(int position) {
-                    for (int i = 0; i < myCardPagerAdapter.getCount(); i++) {
+                    for (int i = 0; i < loginCardPagerAdapter.getCount(); i++) {
                         dots2[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot2));
                     }
 

@@ -3,10 +3,6 @@ package com.example.young_jin.supportproject.singleton;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
-
-/**
- * Created by Young-Jin on 2016-03-04.
- */
 public class BarcodeManager {
     private static BarcodeManager ourInstance = new BarcodeManager();
     private final LruCache<String, Bitmap> mMemoryCache;

@@ -18,7 +18,7 @@
     <dimen name="nav_menu_carrot_margin_left_right">13dp</dimen>
 
     <dimen name="item_offset">7dp</dimen>
-    <dimen name="item2_offset">13dp</dimen>
+    <dimen name="membership_offset">13dp</dimen>
     <dimen name="circular_offset">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
@@ -39,4 +39,7 @@
 
     <dimen name="layout_width">280dp</dimen>
     <dimen name="myham_width">330dp</dimen>
+
+    <dimen name="jamong_circle">230dp</dimen>
+    <dimen name="jamong_circle_thickness">8dp</dimen>
 </resources>

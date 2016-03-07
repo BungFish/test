@@ -10,13 +10,9 @@ import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by Young-Jin on 2016-03-02.
- */
 public class ImageCache {
     private final LruCache<String, Bitmap> mMemoryCache;
     private Context mContext;
-    private Bitmap bitmap;
 
     public ImageCache(Context mContext) {
         this.mContext = mContext;
@@ -87,11 +83,10 @@ public class ImageCache {
 
     class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
         private final WeakReference<ImageView> imageViewReference;
-        private int data = 0;
 
         public BitmapWorkerTask(ImageView imageView) {
             // Use a WeakReference to ensure the ImageView can be garbage collected
-            imageViewReference = new WeakReference<ImageView>(imageView);
+            imageViewReference = new WeakReference<>(imageView);
         }
 
         @Override
@@ -103,7 +98,7 @@ public class ImageCache {
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            if (imageViewReference != null && bitmap != null) {
+            if (bitmap != null) {
                 final ImageView imageView = imageViewReference.get();
                 if (imageView != null) {
                     imageView.setImageBitmap(bitmap);
@@ -116,7 +111,7 @@ public class ImageCache {
     public void loadBitmap(int resId, ImageView imageView) {
         final String imageKey = String.valueOf(resId);
 
-        bitmap = getBitmapFromMemCache(imageKey);
+        Bitmap bitmap = getBitmapFromMemCache(imageKey);
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap);
         } else {

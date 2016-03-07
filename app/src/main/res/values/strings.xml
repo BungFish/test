@@ -49,7 +49,7 @@
         <item>범죄목록</item>
     </string-array>
     <string name="title_activity_myham">MY HAM</string>
-    <string name="title_activity_membership_guide"></string>
+    <string name="title_activity_membership_guide">멤버쉽 안내</string>
     <string name="title_activity_something_more">더 많은 혜택</string>
     <string name="title_activity_card_detail">해피오토멤버스</string>
 </resources>

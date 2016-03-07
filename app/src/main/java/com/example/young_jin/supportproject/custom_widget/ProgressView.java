@@ -10,9 +10,6 @@ import android.widget.ImageView;
 
 import com.example.young_jin.supportproject.R;
 
-/**
- * Created by Young-Jin on 2016-02-25.
- */
 public class ProgressView extends ImageView {
 
 

@@ -2,9 +2,6 @@ package com.example.young_jin.supportproject.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -22,9 +19,6 @@ import com.example.young_jin.supportproject.singleton.CardLab;
 
 import java.util.ArrayList;
 
-/**
- * Created by Young-Jin on 2016-02-14.
- */
 public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAdapter.MyViewHolder> {
 
     private final LayoutInflater inflater;
@@ -43,16 +37,6 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
             R.drawable.card1
     };
 
-    int[] mColors = {
-            R.array.sm,
-            R.array.basic,
-            R.array.drive,
-            R.array.sm,
-            R.array.basic,
-            R.array.drive,
-            R.array.sm
-    };
-
     String[] card_names;
 
     public BigHamRecyclerAdapter(Activity activity) {
@@ -67,9 +51,8 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.pager_item3, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
 
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -113,8 +96,6 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
         private final ImageView imageView;
         private final TextView card_name;
         private final LinearLayout mainLayout;
-        private final LinearLayout firstLayout;
-        private final LinearLayout secondLayout;
         private final LinearLayout thirdLayout;
 
         public MyViewHolder(View itemView) {
@@ -134,13 +115,11 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
 //            int pixels = (int) ((200) * scale + 0.5f);
 
             //레이아웃 가로 길이 설정
-            View view_instance = (View) mainLayout;
+            View view_instance =  mainLayout;
             ViewGroup.LayoutParams params=view_instance.getLayoutParams();
             params.height = (int) (heightOfScreen * 0.6);
             view_instance.setLayoutParams(params);
 
-            firstLayout = (LinearLayout) itemView.findViewById(R.id.first_layout);
-            secondLayout = (LinearLayout) itemView.findViewById(R.id.second_layout);
             thirdLayout = (LinearLayout) itemView.findViewById(R.id.third_layout);
         }
 
@@ -170,45 +149,6 @@ public class BigHamRecyclerAdapter extends RecyclerView.Adapter<BigHamRecyclerAd
 
     public void setPosition(int position) {
         this.position = position;
-    }
-
-    public int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
-
-    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
-
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
     }
 
 }

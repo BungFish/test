@@ -16,10 +16,7 @@ import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.activities.MyhamActivity;
 
-/**
- * Created by Young-Jin on 2016-02-02.
- */
-public class HamCardPagerAdapter extends PagerAdapter {
+public class LogoutCardPagerAdapter extends PagerAdapter {
 
     private final ImageCache imageCache;
     int[] mResources = {
@@ -38,7 +35,7 @@ public class HamCardPagerAdapter extends PagerAdapter {
     Context mContext;
     LayoutInflater mLayoutInflater;
 
-    public HamCardPagerAdapter(Context context) {
+    public LogoutCardPagerAdapter(Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -54,12 +51,12 @@ public class HamCardPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((LinearLayout) object);
+        return view == (object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.logout_card_pager_item, container, false);
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
 //        imageView.setImageBitmap(
@@ -93,7 +90,7 @@ public class HamCardPagerAdapter extends PagerAdapter {
         int pixels = (int) ((50*2) * scale + 0.5f);
 
         //레이아웃 가로 길이 설정
-        View view_instance = (View)mainLayout;
+        View view_instance = mainLayout;
         ViewGroup.LayoutParams params = view_instance.getLayoutParams();
         params.width = widthOfScreen - pixels;
         view_instance.setLayoutParams(params);

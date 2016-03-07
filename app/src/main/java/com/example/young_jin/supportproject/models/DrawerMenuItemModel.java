@@ -1,8 +1,5 @@
 package com.example.young_jin.supportproject.models;
 
-/**
- * Created by Jin on 2015-06-04.
- */
 public class DrawerMenuItemModel {
 
     private int iconId;

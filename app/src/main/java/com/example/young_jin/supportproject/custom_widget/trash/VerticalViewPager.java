@@ -1,4 +1,4 @@
-package com.example.young_jin.supportproject.custom_widget;
+package com.example.young_jin.supportproject.custom_widget.trash;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -6,9 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by Young-Jin on 2016-02-14.
- */
 public class VerticalViewPager extends ViewPager {
 
     public VerticalViewPager(Context context) {

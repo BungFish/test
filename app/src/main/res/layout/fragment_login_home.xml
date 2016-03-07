@@ -1,69 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sliding_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
-    sothree:umanoPanelHeight="0dp">
+    android:background="@color/icons"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/icons"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+
+        <view
+            android:id="@+id/pager"
+            class="com.example.young_jin.supportproject.custom_widget.WrapContentHeightViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <!--<android.support.v4.view.ViewPager-->
-            <!--android:id="@+id/pager"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" />-->
-
-            <view
-                android:id="@+id/pager"
-                class="com.example.young_jin.supportproject.custom_widget.WrapContentHeightViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <RelativeLayout
-                android:id="@+id/viewPagerIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@+id/pager"
-                android:layout_marginTop="5dp"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:id="@+id/viewPagerCountDots"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="horizontal" />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.03"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.97"/>
-
-        <RelativeLayout
-            android:id="@+id/viewPagerIndicator2"
+            android:id="@+id/viewPagerIndicator"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_alignBottom="@+id/pager"
@@ -71,47 +24,41 @@
             android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/viewPagerCountDots2"
+                android:id="@+id/viewPagerCountDots"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal" />
 
         </RelativeLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/third_layout"
+    </RelativeLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:gravity="center|top"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="vertical" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@color/hint"
-            android:gravity="center"
-            android:text="바코드"
-            android:textColor="@color/icons"
-            android:textSize="20dp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.97" />
+
+    <RelativeLayout
+        android:id="@+id/viewPagerIndicator2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|bottom"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
+            android:id="@+id/viewPagerCountDots2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" />
 
-            <ImageView
-                android:id="@+id/show_barcode"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/card1" />
-
-        </LinearLayout>
-    </LinearLayout>
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    </RelativeLayout>
+</LinearLayout>

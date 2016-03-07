@@ -1,8 +1,6 @@
 package com.example.young_jin.supportproject.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.young_jin.supportproject.R;
-import com.example.young_jin.supportproject.adapter.MyAdapter;
 import com.example.young_jin.supportproject.fragmnets.MembershipGuideFragment;
 import com.example.young_jin.supportproject.fragmnets.MembershipGuideFragment2;
 
@@ -19,9 +16,6 @@ public class MembershipGuideActivity extends AppCompatActivity {
 
     private Button filter_distance;
     private Button filter_price;
-    private MyAdapter adapter;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
 
     @Override
     public void finish() {

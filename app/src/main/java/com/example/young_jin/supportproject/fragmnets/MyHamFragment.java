@@ -24,25 +24,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.young_jin.supportproject.CircularOffsetDecoration;
+import com.example.young_jin.supportproject.adapter.recycler_item_decoration.CircularOffsetDecoration;
 import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
 import com.example.young_jin.supportproject.adapter.HamRecyclerAdapter;
-import com.example.young_jin.supportproject.adapter.MyHamRecyclerAdapter;
+import com.example.young_jin.supportproject.adapter.trash.MyHamRecyclerAdapter;
 import com.example.young_jin.supportproject.models.Card;
 import com.example.young_jin.supportproject.singleton.BarcodeManager;
 import com.example.young_jin.supportproject.singleton.CardLab;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-/**
- * Created by Young-Jin on 2016-02-11.
- */
 public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.ClickListener{
-
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
 
     int[] mResources = {
             R.drawable.membership_card_sm,
@@ -67,28 +60,23 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
             "23402395343"
     };
 
-    private HamRecyclerAdapter adapter;
     private TextView card_name;
     private LinearLayout firstLayout;
     private LinearLayout secondLayout;
     private CoordinatorLayout coordinatorLayout;
     private Snackbar snackbar;
     private LinearLayout mainLayout;
-    private Random rd;
     private Animation anim;
-    private Dialog dialog;
     private ImageView[] hamcardImage;
     private TextView[] hamcardName;
     private Animation card_selected_animation;
-    private Animation card_unselected_animation;
     private ImageCache imageCache;
     private int mSelectedCard;
     private int mPreviouslySelectedCard;
     private ArrayList<Card> hamCards;
 
     public static MyHamFragment newInstance() {
-        MyHamFragment fragment = new MyHamFragment();
-        return fragment;
+        return new MyHamFragment();
     }
 
     public MyHamFragment() {
@@ -111,7 +99,6 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
         hamCards = CardLab.get(getActivity()).getmCards();
         card_selected_animation = AnimationUtils.loadAnimation(getActivity(), R.anim.card_selected);
-        card_unselected_animation = AnimationUtils.loadAnimation(getActivity(), R.anim.card_unselected);
         anim = AnimationUtils.loadAnimation(getActivity(), R.anim.scale_up_2);
 
         imageCache = new ImageCache(getActivity());
@@ -143,12 +130,12 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 //        ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.item_offset);
 //        mMyHamRecyclerView.addItemDecoration(itemDecoration);
 
-        recyclerView = (RecyclerView) layout.findViewById(R.id.my_list);
-        linearLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.my_list);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        adapter = new HamRecyclerAdapter(getActivity());
+        HamRecyclerAdapter adapter = new HamRecyclerAdapter(getActivity());
         recyclerView.setAdapter(adapter);
 
         CircularOffsetDecoration circularDecoration = new CircularOffsetDecoration(getActivity(), R.dimen.circular_offset);
@@ -163,8 +150,6 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
         secondLayout = (LinearLayout) layout.findViewById(R.id.second_layout);
         secondLayout.setBackgroundColor(colors[1]);
-
-        rd = new Random();
 
 //        fadeIn = new AlphaAnimation(0, 1);
 //        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
@@ -241,7 +226,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
                 break;
 
             case R.id.add_card:
-                dialog = new Dialog(getActivity());
+                Dialog dialog = new Dialog(getActivity());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.show_barcode);
@@ -259,20 +244,6 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
         }
         return true;
-    }
-
-    public void randomAnimation(){
-        switch (rd.nextInt(2)){
-            case 0:
-                mainLayout.setTranslationX(1500);
-                mainLayout.animate().translationX(0).setDuration(500);
-                break;
-            case 1:
-                mainLayout.setTranslationX(-1500);
-                mainLayout.animate().translationX(-0).setDuration(500);
-                break;
-
-        }
     }
 
     public void setHamcards(){

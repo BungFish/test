@@ -3,21 +3,17 @@ package com.example.young_jin.supportproject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.DatePicker;
 
-import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * Created by Young-Jin on 2016-02-07.
- */
 public class DatePickerFragment extends android.support.v4.app.DialogFragment {
     public static final String EXTRA_DATE = "com.example.young_jin.supportproject";
     private Date mDate;
@@ -32,12 +28,15 @@ public class DatePickerFragment extends android.support.v4.app.DialogFragment {
         getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         mDate = (Date)getArguments().getSerializable(EXTRA_DATE);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(mDate);
+        if (mDate != null) {
+            calendar.setTime(mDate);
+        }
         int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
