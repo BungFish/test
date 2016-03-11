@@ -3,6 +3,7 @@ package com.example.young_jin.supportproject.activities;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,7 @@ public class SomethingMoreActivity extends AppCompatActivity {
     private ObjectAnimator rotation;
     private long mCurrentPlayTime;
     private ObjectAnimator rotation2;
+    private Intent intent;
 
     @Override
     public void finish() {
@@ -49,11 +51,11 @@ public class SomethingMoreActivity extends AppCompatActivity {
         LinearLayout mainIcon = (LinearLayout) findViewById(R.id.main_icon);
         TextView mainText = (TextView) findViewById(R.id.main_text);
 
-        ObjectAnimator mainIconAnimation = ObjectAnimator.ofFloat(mainIcon, "translationY", 0, 25f);
+        final ObjectAnimator mainIconAnimation = ObjectAnimator.ofFloat(mainIcon, "translationY", 0, 25f);
         mainIconAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         mainIconAnimation.setDuration(700);
 
-        ObjectAnimator mainTextAnimation = ObjectAnimator.ofFloat(mainText, View.ALPHA, 1f, 0);
+        final ObjectAnimator mainTextAnimation = ObjectAnimator.ofFloat(mainText, View.ALPHA, 1f, 0);
         mainTextAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         mainTextAnimation.setDuration(700);
 
@@ -126,7 +128,6 @@ public class SomethingMoreActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
             }
 
             @Override
@@ -148,7 +149,14 @@ public class SomethingMoreActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                finish();
+                intent = new Intent(getApplicationContext(), MembershipGuideActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
+                mainButton.setClickable(true);
+                mainIconAnimation.reverse();
+                mainTextAnimation.reverse();
+
             }
 
             @Override

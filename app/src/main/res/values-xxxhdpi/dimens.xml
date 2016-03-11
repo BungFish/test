@@ -45,4 +45,8 @@
     <dimen name="jamong_circle">270dp</dimen>
     <dimen name="jamong_circle_thickness">12dp</dimen>
 
+    <dimen name="myham_mini_icon_margin_left">10dp</dimen>
+    <dimen name="myham_mini_title_margin_left">6dp</dimen>
+    <dimen name="myham_subtitle_margin_left">16dp</dimen>
+
 </resources>

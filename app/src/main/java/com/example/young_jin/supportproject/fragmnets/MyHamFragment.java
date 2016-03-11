@@ -2,6 +2,7 @@ package com.example.young_jin.supportproject.fragmnets;
 
 import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -24,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.young_jin.supportproject.activities.MembershipGuideActivity;
 import com.example.young_jin.supportproject.adapter.recycler_item_decoration.CircularOffsetDecoration;
 import com.example.young_jin.supportproject.ImageCache;
 import com.example.young_jin.supportproject.R;
@@ -74,6 +76,7 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
     private int mSelectedCard;
     private int mPreviouslySelectedCard;
     private ArrayList<Card> hamCards;
+    private Intent intent;
 
     public static MyHamFragment newInstance() {
         return new MyHamFragment();
@@ -260,8 +263,11 @@ public class MyHamFragment extends Fragment implements MyHamRecyclerAdapter.Clic
 
                     if(finalI == mResources.length) {
                         hamcardImage[mPreviouslySelectedCard].setAlpha(0.5f);
-                        hamcardImage[mSelectedCard].startAnimation(card_selected_animation);
-                        Toast.makeText(getActivity(), "카드등록화면 전환", Toast.LENGTH_SHORT).show();
+//                        hamcardImage[mSelectedCard].startAnimation(card_selected_animation);
+                        intent = new Intent(getActivity(), MembershipGuideActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        getActivity().startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.hold);
                     } else {
                         hamcardImage[mPreviouslySelectedCard].setAlpha(0.5f);
                         hamcardImage[mSelectedCard].setAlpha(1f);

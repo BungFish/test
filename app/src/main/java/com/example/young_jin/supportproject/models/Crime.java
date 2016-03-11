@@ -1,16 +1,21 @@
 package com.example.young_jin.supportproject.models;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Created by Young-Jin on 2016-02-08.
  */
-public class Crime {
+public class Crime implements ParentObject{
     private UUID mID;
     private String mTItle;
     private Date mDate;
     private boolean mSolved;
+
+    private List<Object> mChildrenList;
 
     public Crime() {
         this.mID = UUID.randomUUID();
@@ -43,5 +48,15 @@ public class Crime {
 
     public void setmDate(Date mDate) {
         this.mDate = mDate;
+    }
+
+    @Override
+    public List<Object> getChildObjectList() {
+        return mChildrenList;
+    }
+
+    @Override
+    public void setChildObjectList(List<Object> list) {
+        mChildrenList = list;
     }
 }

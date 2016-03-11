@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/icons"
+            android:textColor="@color/white_grey"
             android:textSize="@dimen/text_size"
             android:text="무제한"/>
     </RelativeLayout>
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="주유리터당\n할인"
         android:textSize="@dimen/text_size"
-        android:textColor="@color/icons"
+        android:textColor="@color/white_opacity_middle"
         android:gravity="center"
         android:id="@+id/textView18" />
 

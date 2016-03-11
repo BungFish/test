@@ -18,7 +18,7 @@
     <dimen name="nav_menu_carrot_margin_left_right">12dp</dimen>
 
     <dimen name="item_offset">5dp</dimen>
-    <dimen name="membership_offset">10dp</dimen>
+    <dimen name="membership_offset">8dp</dimen>
     <dimen name="circular_offset">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
@@ -29,7 +29,7 @@
 
     <dimen name="circular_width_size">55dp</dimen>
     <dimen name="circular_height_size">55dp</dimen>
-    <dimen name="circular_thickness">6dp</dimen>
+    <dimen name="circular_thickness">5dp</dimen>
 
     <dimen name="home_card_name_size">16dp</dimen>
     <dimen name="home_card_info_size1">16dp</dimen>
@@ -39,4 +39,7 @@
 
     <dimen name="layout_width">280dp</dimen>
     <dimen name="myham_width">300dp</dimen>
+    <dimen name="myham_mini_icon_margin_left">7dp</dimen>
+    <dimen name="myham_mini_title_margin_left">4dp</dimen>
+    <dimen name="myham_subtitle_margin_left">16dp</dimen>
 </resources>

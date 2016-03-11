@@ -24,16 +24,16 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="@dimen/myham_mini_icon_margin_left"
+                android:layout_marginStart="@dimen/myham_mini_icon_margin_left"
                 android:adjustViewBounds="true"
                 android:src="@drawable/myham_card" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginStart="6dp"
+                android:layout_marginLeft="@dimen/myham_mini_title_margin_left"
+                android:layout_marginStart="@dimen/myham_mini_title_margin_left"
                 android:text="나의보유카드"
                 android:textSize="14dp"
                 android:textStyle="bold" />
@@ -150,7 +150,7 @@
                     android:id="@+id/card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="@dimen/myham_subtitle_margin_left"
                     android:gravity="center"
                     android:text="HAM Basic Card"
                     android:textColor="@color/icons"
@@ -159,7 +159,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="@dimen/myham_subtitle_margin_left"
                     android:gravity="center"
                     android:text="유효기한: ~16.02.02"
                     android:textColor="@color/icons"
@@ -230,6 +230,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:background="@drawable/myham_button_background"
+                        android:clickable="true"
                         android:orientation="vertical">
 
                         <ImageView
@@ -260,6 +262,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:background="@drawable/myham_button_background"
+                        android:clickable="true"
                         android:orientation="vertical">
 
                         <ImageView
@@ -296,6 +300,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:background="@drawable/myham_button_background"
+                        android:clickable="true"
                         android:orientation="vertical">
 
                         <ImageView
@@ -324,6 +330,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:background="@drawable/myham_button_background"
+                        android:clickable="true"
                         android:orientation="vertical">
 
                         <ImageView

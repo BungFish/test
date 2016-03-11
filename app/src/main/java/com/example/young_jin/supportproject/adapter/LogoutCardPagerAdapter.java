@@ -102,7 +102,7 @@ public class LogoutCardPagerAdapter extends PagerAdapter {
         secondLayout.setBackgroundColor(colors[1]);
 
         LinearLayout thirdLayout = (LinearLayout) itemView.findViewById(R.id.third_layout);
-        thirdLayout.setBackgroundColor(colors[2]);
+        mainLayout.setBackgroundColor(colors[2]);
 
         thirdLayout.setOnClickListener(new View.OnClickListener() {
             @Override

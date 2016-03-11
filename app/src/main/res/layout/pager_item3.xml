@@ -13,7 +13,8 @@
         android:layout_marginLeft="@dimen/defualt_margin"
         android:layout_marginRight="@dimen/defualt_margin"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/grey_dark">
 
         <LinearLayout
             android:id="@+id/first_layout"
@@ -40,7 +41,7 @@
                 android:layout_weight="0.35"
                 android:gravity="center"
                 android:text="HAM Basic Card"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/secondary_text"
                 android:textSize="@dimen/home_card_name_size" />
         </LinearLayout>
 
@@ -78,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/secondary_text"
                             android:textSize="@dimen/home_card_info_size1" />
 
                         <TextView
@@ -86,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="원"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/secondary_text"
                             android:textSize="@dimen/home_card_info_size2" />
                     </LinearLayout>
 
@@ -96,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="주유리터당\n할인"
-                        android:textColor="@color/primary_text"
+                        android:textColor="@color/secondary_text"
                         android:textSize="@dimen/home_card_info_size3" />
                 </LinearLayout>
 
@@ -132,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="20~30"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/secondary_text"
                             android:textSize="@dimen/home_card_info_size1" />
 
                         <TextView
@@ -140,7 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="%"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/secondary_text"
                             android:textSize="@dimen/home_card_info_size2" />
                     </LinearLayout>
 
@@ -150,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="주유리터당\n할인"
-                        android:textColor="@color/primary_text"
+                        android:textColor="@color/secondary_text"
                         android:textSize="@dimen/home_card_info_size3" />
                 </LinearLayout>
                 <View
@@ -178,7 +179,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="20"
-                        android:textColor="@color/primary_text"
+                        android:textColor="@color/secondary_text"
                         android:textSize="@dimen/home_card_info_size1" />
 
                     <TextView
@@ -186,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="원"
-                        android:textColor="@color/primary_text"
+                        android:textColor="@color/secondary_text"
                         android:textSize="@dimen/home_card_info_size2" />
                 </LinearLayout>
 
@@ -196,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="주유리터당\n할인"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/secondary_text"
                     android:textSize="@dimen/home_card_info_size3" />
             </LinearLayout>
         </LinearLayout>
@@ -206,7 +207,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.15"
-            android:background="@color/grey_dark"
+            android:background="@drawable/detail_button_background"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -216,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="자세히 보기"
-                android:textColor="@color/primary_text"
+                android:textColor="@color/secondary_text"
                 android:textSize="@dimen/home_card_detail" />
         </LinearLayout>
 
