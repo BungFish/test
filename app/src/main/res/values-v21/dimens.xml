@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="myham_mini_icon_margin_left">10dp</dimen>
+    <dimen name="myham_mini_title_margin_left">6dp</dimen>
+    <dimen name="myham_subtitle_margin_left">16dp</dimen>
+</resources>
